@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingTroll : MonoBehaviour
+public class KingTroll : Troll
 {
     [SerializeField] private EnemyType kingTrollData;
 

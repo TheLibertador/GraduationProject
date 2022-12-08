@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EarlTroll : MonoBehaviour
+public class EarlTroll : Troll
 {
     [SerializeField] private EnemyType earlTrollData;
 

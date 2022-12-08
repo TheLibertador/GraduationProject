@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastTroll : MonoBehaviour
+public class FastTroll : Troll
 {
     [SerializeField] private EnemyType fastTrollData;
     

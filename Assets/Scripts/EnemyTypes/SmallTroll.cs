@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallTroll : MonoBehaviour
+public class SmallTroll : Troll
 {
     [SerializeField] private EnemyType smallTrollData;
     
@@ -12,6 +12,9 @@ public class SmallTroll : MonoBehaviour
         Debug.Log("My health is, " + smallTrollData.enemyHealth);
         Debug.Log("My speed is, " +smallTrollData.enemySpeed);
         Debug.Log("My damage is, " + smallTrollData.enemyDamage);
+        
     }
     
+
+   
 }
