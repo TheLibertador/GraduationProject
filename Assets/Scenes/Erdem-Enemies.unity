@@ -123,6 +123,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &661199015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 661199017}
+  - component: {fileID: 661199016}
+  - component: {fileID: 661199018}
+  m_Layer: 0
+  m_Name: EnemyFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &661199016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661199015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4273bdc1974259f478d7bdbaa8cfc3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallTroll: {fileID: 4445017884255487264, guid: 222fae13d247b354d9f681dacf5a59fa, type: 3}
+  fastTroll: {fileID: 8222410598338941186, guid: 714ac25226e9cec4e857560a0e808dc1, type: 3}
+  heavyTroll: {fileID: 221790227904970493, guid: f907c722f9f6a714eb6afadef76d981e, type: 3}
+  earlTroll: {fileID: 1777084791421189859, guid: ba3698625fbf4204b9b5e5f0e7056669, type: 3}
+  kingTroll: {fileID: 3288665209575445635, guid: d16505e45f7241c4582cc3350fec816e, type: 3}
+--- !u!4 &661199017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661199015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &661199018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661199015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae6dbf8772709b4e9c0195f06f4a02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1677491704
 GameObject:
   m_ObjectHideFlags: 0
