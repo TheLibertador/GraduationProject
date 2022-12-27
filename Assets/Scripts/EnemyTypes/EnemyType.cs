@@ -11,4 +11,5 @@ public class EnemyType : ScriptableObject
     public float enemyHealth = 10f;
     public float enemySpeed = 5f;
     public float enemyDamage = 5f;
+    public float enemyRadius = 10f;
 }

@@ -31,7 +31,7 @@ public class EnemyFactory : MonoBehaviour
                 return Instantiate(kingTroll);
                 break;
             default:
-                Debug.Log("Wrong input");
+                
                 return null;
 
         }

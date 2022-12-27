@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FactoryTest : MonoBehaviour
 {
-    private string enemyType;
-    private EnemyFactory factory;
+    private string m_EnemyType;
+    private EnemyFactory m_Factory;
     
     void Start()
     {
-        factory = GetComponent<EnemyFactory>();
+        m_Factory = GetComponent<EnemyFactory>();
 
     }
 
@@ -18,27 +18,27 @@ public class FactoryTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            enemyType = "smallTroll";
+            m_EnemyType = "smallTroll";
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            enemyType = "fastTroll";
+            m_EnemyType = "fastTroll";
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            enemyType = "heavyTroll";
+            m_EnemyType = "heavyTroll";
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
-            enemyType = "earlTroll";
+            m_EnemyType = "earlTroll";
         }
         else if (Input.GetKeyDown(KeyCode.Y))
         {
-            enemyType = "kingTroll";
+            m_EnemyType = "kingTroll";
         }
 
-        factory.InstantiateTroll(enemyType);
-        enemyType = null;
+        m_Factory.InstantiateTroll(m_EnemyType);
+        m_EnemyType = null;
 
     }
 }
