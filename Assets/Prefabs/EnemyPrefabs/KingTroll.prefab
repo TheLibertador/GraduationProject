@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kingTrollData: {fileID: 11400000, guid: d0c0a92c50ca172459717d3f049daff7, type: 2}
-  initialTarget: {fileID: 2685549055404659236, guid: eb04e2bae7dbfbe4f8781940adeaa2e8, type: 3}
+  initialTarget: {fileID: 0}
 --- !u!195 &2128225466464327228
 NavMeshAgent:
   m_ObjectHideFlags: 0
