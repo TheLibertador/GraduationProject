@@ -70,7 +70,7 @@ public class TimeController : MonoBehaviour
 
         if (timeText != null)
         {
-            timeText.text = m_CurrentTime.ToString("HH:mm");
+            timeText.text = "Current time : " + m_CurrentTime.ToString("HH:mm");
         }
     }
 

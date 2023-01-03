@@ -25,7 +25,7 @@ public class KingTroll : Troll
     void Start()
     {
         FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget);
-        
+        SetAgentDestination();
         InvokeRepeating(nameof(SetAgentDestination),3f,1f);
     }
 
