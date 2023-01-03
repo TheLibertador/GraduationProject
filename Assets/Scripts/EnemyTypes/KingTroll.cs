@@ -8,43 +8,29 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class KingTroll : Troll
 {
-    
-    [SerializeField] private EnemyType kingTrollData; 
+
+    [SerializeField] private EnemyType kingTrollData;
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
-
-    private float m_SetDestinationCallTimer = 3f;
     
-
-
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
         m_İnitialTarget = GameObject.Find("Target").transform;
         m_Agent.speed = kingTrollData.enemySpeed;
         Debug.Log(m_İnitialTarget.position);
-       
+
     }
 
     void Start()
     {
-        FindNearestEnemy(kingTrollData.enemyRadius,m_İnitialTarget);
-        //m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
+        FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget);
+        
+        InvokeRepeating(nameof(SetAgentDestination),3f,1f);
     }
 
-    private void Update()
+    private void SetAgentDestination()
     {
-        while (m_SetDestinationCallTimer > 0)
-        {
-            m_SetDestinationCallTimer -= Time.deltaTime;
-
-            if (m_SetDestinationCallTimer == 0)
-            {
-                m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
-                m_SetDestinationCallTimer = 3f;
-            }
-        }
-       
-            
+        m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
     }
 }
