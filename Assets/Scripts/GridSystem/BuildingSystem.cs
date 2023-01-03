@@ -6,25 +6,25 @@ using UnityEngine.Tilemaps;
 
 public class BuildingSystem : MonoBehaviour
 {
-    public static BuildingSystem current;
+    public static BuildingSystem Current;
 
     public GridLayout gridLayout;
 
-    private Grid grid;
+    private Grid m_Grid;
 
-    [SerializeField] private Tilemap MainTilemap;
+    [SerializeField] private Tilemap mainTilemap;
 
     [SerializeField] private Tile whiteTile;
 
     public GameObject prefab1;
     public GameObject prefab2;
 
-    private PlacableObject objectToPlace;
+    private PlacableObject m_ObjectToPlace;
 
     private void Awake()
     {
-        current = this;
-        grid = gridLayout.gameObject.GetComponent<Grid>();
+        Current = this;
+        m_Grid = gridLayout.gameObject.GetComponent<Grid>();
     }
 
     private void Update()
@@ -54,7 +54,7 @@ public class BuildingSystem : MonoBehaviour
     public Vector3 SnapCoordinateToGrid(Vector3 position)
     {
         Vector3Int cellPos = gridLayout.WorldToCell(position);
-        position = grid.GetCellCenterWorld(cellPos);
+        position = m_Grid.GetCellCenterWorld(cellPos);
         return position;
     }
 
@@ -63,7 +63,7 @@ public class BuildingSystem : MonoBehaviour
         Vector3 position = SnapCoordinateToGrid(Vector3.zero);
 
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
-        objectToPlace = obj.GetComponent<PlacableObject>();
+        m_ObjectToPlace = obj.GetComponent<PlacableObject>();
         obj.AddComponent<ObjectDrag>();
     }
     

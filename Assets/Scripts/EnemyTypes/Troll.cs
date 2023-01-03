@@ -13,17 +13,22 @@ public  class Troll : MonoBehaviour
         foreach (Collider collider1 in colliders)
         {
             Transform newTarget = collider1.gameObject.GetComponent<Transform>();
+            if (currentTarget.CompareTag("Target") && newTarget.CompareTag("Player"))
+            {
+                return newTarget.transform;
+            }
             if (currentTarget.CompareTag("Player"))
             {
-                return currentTarget;
+                return currentTarget.transform;
             }
-            else if (newTarget.CompareTag("Player") && currentTarget.CompareTag("Building"))
+
+            if (newTarget.CompareTag("Player") && currentTarget.CompareTag("Building"))
             {
                 return newTarget.transform;
             }
         }
 
-        return currentTarget;
+        return currentTarget.transform;
 
     }
     

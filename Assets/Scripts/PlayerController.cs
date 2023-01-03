@@ -16,17 +16,17 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Upward speed to apply when jumping in meters/second")]
     public float jumpSpeed = 4f;
     
-    public bool IsGrounded { get; private set; }
-    public float ForwardInput { get; set; }
-    public float TurnInput { get; set; }
-    public bool JumpInput { get; set; }
-    new private Rigidbody rigidbody;
-    private CapsuleCollider capsuleCollider;
+    public bool ısGrounded { get; private set; }
+    public float forwardInput { get; set; }
+    public float turnInput { get; set; }
+    public bool jumpInput { get; set; }
+    new private Rigidbody m_Rigidbody;
+    private CapsuleCollider m_CapsuleCollider;
     
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        m_Rigidbody = GetComponent<Rigidbody>();
+        m_CapsuleCollider = GetComponent<CapsuleCollider>();
     }
     
     private void FixedUpdate()
@@ -37,20 +37,20 @@ public class PlayerController : MonoBehaviour
         int vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
         int horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         bool jump = Input.GetKey(KeyCode.Space);
-        ForwardInput = vertical;
-        TurnInput = horizontal;
-        JumpInput = jump;
+        forwardInput = vertical;
+        turnInput = horizontal;
+        jumpInput = jump;
     }
     
     /// <summary>
-    /// Checks whether the character is on the ground and updates <see cref="IsGrounded"/>
+    /// Checks whether the character is on the ground and updates <see cref="ısGrounded"/>
     /// </summary>
     private void CheckGrounded()
     {
-        IsGrounded = false;
-        float capsuleHeight = Mathf.Max(capsuleCollider.radius * 2f, capsuleCollider.height);
-        Vector3 capsuleBottom = transform.TransformPoint(capsuleCollider.center - Vector3.up * capsuleHeight / 2f);
-        float radius = transform.TransformVector(capsuleCollider.radius, 0f, 0f).magnitude;
+        ısGrounded = false;
+        float capsuleHeight = Mathf.Max(m_CapsuleCollider.radius * 2f, m_CapsuleCollider.height);
+        Vector3 capsuleBottom = transform.TransformPoint(m_CapsuleCollider.center - Vector3.up * capsuleHeight / 2f);
+        float radius = transform.TransformVector(m_CapsuleCollider.radius, 0f, 0f).magnitude;
         Ray ray = new Ray(capsuleBottom + transform.up * .01f, -transform.up);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, radius * 5f))
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             {
                 float maxDist = radius / Mathf.Cos(Mathf.Deg2Rad * normalAngle) - radius + .02f;
                 if (hit.distance < maxDist)
-                    IsGrounded = true;
+                    ısGrounded = true;
             }
         }
     }
@@ -71,34 +71,34 @@ public class PlayerController : MonoBehaviour
     private void ProcessActions()
     {
         // Process Turning
-        if (TurnInput != 0f)
+        if (turnInput != 0f)
         {
-            float angle = Mathf.Clamp(TurnInput, -1f, 1f) * turnSpeed;
+            float angle = Mathf.Clamp(turnInput, -1f, 1f) * turnSpeed;
             transform.Rotate(Vector3.up, Time.fixedDeltaTime * angle);
         }
         // Process Movement/Jumping
-        if (IsGrounded)
+        if (ısGrounded)
         {
             // Reset the velocity
-            rigidbody.velocity = Vector3.zero;
+            m_Rigidbody.velocity = Vector3.zero;
             // Check if trying to jump
-            if (JumpInput && allowJump)
+            if (jumpInput && allowJump)
             {
                 // Apply an upward velocity to jump
-                rigidbody.velocity += Vector3.up * jumpSpeed;
+                m_Rigidbody.velocity += Vector3.up * jumpSpeed;
             }
 
             // Apply a forward or backward velocity based on player input
-            rigidbody.velocity += transform.forward * Mathf.Clamp(ForwardInput, -1f, 1f) * moveSpeed;
+            m_Rigidbody.velocity += transform.forward * Mathf.Clamp(forwardInput, -1f, 1f) * moveSpeed;
         }
         else
         {
             // Check if player is trying to change forward/backward movement while jumping/falling
-            if (!Mathf.Approximately(ForwardInput, 0f))
+            if (!Mathf.Approximately(forwardInput, 0f))
             {
                 // Override just the forward velocity with player input at half speed
-                Vector3 verticalVelocity = Vector3.Project(rigidbody.velocity, Vector3.up);
-                rigidbody.velocity = verticalVelocity + transform.forward * Mathf.Clamp(ForwardInput, -1f, 1f) * moveSpeed / 2f;
+                Vector3 verticalVelocity = Vector3.Project(m_Rigidbody.velocity, Vector3.up);
+                m_Rigidbody.velocity = verticalVelocity + transform.forward * Mathf.Clamp(forwardInput, -1f, 1f) * moveSpeed / 2f;
             }
         }
     }

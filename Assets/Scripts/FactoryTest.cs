@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FactoryTest : MonoBehaviour
 {
+    [SerializeField] private Transform instantiateZone;
     private string m_EnemyType;
     private EnemyFactory m_Factory;
     
@@ -16,28 +17,28 @@ public class FactoryTest : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             m_EnemyType = "smallTroll";
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             m_EnemyType = "fastTroll";
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.Keypad3))
         {
             m_EnemyType = "heavyTroll";
         }
-        else if (Input.GetKeyDown(KeyCode.T))
+        else if (Input.GetKeyDown(KeyCode.Keypad4))
         {
             m_EnemyType = "earlTroll";
         }
-        else if (Input.GetKeyDown(KeyCode.Y))
+        else if (Input.GetKeyDown(KeyCode.Keypad5))
         {
             m_EnemyType = "kingTroll";
         }
 
-        m_Factory.InstantiateTroll(m_EnemyType);
+        m_Factory.InstantiateTroll(m_EnemyType,instantiateZone);
         m_EnemyType = null;
 
     }

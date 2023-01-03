@@ -4,33 +4,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+[RequireComponent(typeof(NavMeshAgent))]
 public class KingTroll : Troll
 {
-    [SerializeField] private EnemyType kingTrollData;
-    [SerializeField] private Transform initialTarget;
+    
+    [SerializeField] private EnemyType kingTrollData; 
+    private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
+
+    private float m_SetDestinationCallTimer = 3f;
+    
+
 
     private void Awake()
     {
-        //initialTarget.position = new Vector3(-16.8f, 1f, 19.8f);
-        Debug.Log(initialTarget);
+        m_Agent = gameObject.GetComponent<NavMeshAgent>();
+        m_İnitialTarget = GameObject.Find("Target").transform;
+        m_Agent.speed = kingTrollData.enemySpeed;
+        Debug.Log(m_İnitialTarget.position);
+       
     }
 
     void Start()
     {
-        Debug.Log("Problem starts here!");
-        m_Agent = gameObject.GetComponent<NavMeshAgent>();
-        Debug.Log("My Type is == " + m_Agent.GetType());
-        Debug.Log("Hi! My name is, " + kingTrollData.enemyTypeName);
-        Debug.Log("My health is, " + kingTrollData.enemyHealth);
-        Debug.Log("My speed is, " +kingTrollData.enemySpeed);
-        Debug.Log("My damage is, " + kingTrollData.enemyDamage);
-        FindNearestEnemy(kingTrollData.enemyRadius,initialTarget);
+        FindNearestEnemy(kingTrollData.enemyRadius,m_İnitialTarget);
+        //m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
     }
 
     private void Update()
     {
-        Debug.Log(FindNearestEnemy(kingTrollData.enemyRadius,initialTarget).position + "ITS MY TARGET");
-        m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, initialTarget).position);
+        while (m_SetDestinationCallTimer > 0)
+        {
+            m_SetDestinationCallTimer -= Time.deltaTime;
+
+            if (m_SetDestinationCallTimer == 0)
+            {
+                m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
+                m_SetDestinationCallTimer = 3f;
+            }
+        }
+       
+            
     }
 }
