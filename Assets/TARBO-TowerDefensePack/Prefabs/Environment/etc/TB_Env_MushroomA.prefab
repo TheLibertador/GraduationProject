@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4192836795909144}
   - component: {fileID: 33399365736179378}
   - component: {fileID: 23074530558601714}
+  - component: {fileID: 3661029609677112686}
   m_Layer: 0
   m_Name: TB_Env_MushroomA
   m_TagString: Untagged
@@ -83,3 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3661029609677112686
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778202350898820}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.158, y: 0.116000004, z: 0.15400001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.116000004, z: 0.008}
+  m_TimeToStationary: 0.5

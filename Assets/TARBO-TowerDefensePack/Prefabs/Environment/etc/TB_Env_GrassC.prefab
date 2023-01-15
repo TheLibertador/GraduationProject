@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4169685984084774}
   - component: {fileID: 33907084092736956}
   - component: {fileID: 23127253922147694}
+  - component: {fileID: 6147492436310544293}
   m_Layer: 0
   m_Name: TB_Env_GrassC
   m_TagString: Untagged
@@ -83,3 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &6147492436310544293
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104582276731760}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.611, y: 0.17500001, z: 0.60200006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.008, y: 0.17500001, z: 0.040000003}
+  m_TimeToStationary: 0.5

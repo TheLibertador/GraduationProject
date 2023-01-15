@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23502269445986904}
   - component: {fileID: 6945165843499165407}
   - component: {fileID: 3893918598840845220}
+  - component: {fileID: 8506583782135732063}
   m_Layer: 0
   m_Name: TB_ArcherTower_Lvl4_A_Cons
   m_TagString: Untagged
@@ -110,3 +111,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.2465, y: 10.897807, z: 8.365431}
   m_Center: {x: -0.32412052, y: 5.1745496, z: -0.3835883}
+--- !u!208 &8506583782135732063
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473339042879560}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.123, y: 5.4490004, z: 4.183}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.324, y: 5.175, z: -0.384}
+  m_TimeToStationary: 0.5

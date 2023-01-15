@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class TimeController : MonoBehaviour
+public class TimeController : MonoBehaviour, IDataPersistence
 {
      [SerializeField]
     private float timeMultiplier;
@@ -41,17 +41,18 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float maxMoonLightIntensity;
 
+   
     private DateTime m_CurrentTime;
 
     private TimeSpan m_SunriseTime;
 
     private TimeSpan m_SunsetTime;
 
+ 
+
     // Start is called before the first frame update
     void Start()
     {
-        m_CurrentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
-
         m_SunriseTime = TimeSpan.FromHours(sunriseHour);
         m_SunsetTime = TimeSpan.FromHours(sunsetHour);
     }
@@ -59,6 +60,7 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         UpdateTimeOfDay();
         RotateSun();
         UpdateLightSettings();
@@ -67,13 +69,13 @@ public class TimeController : MonoBehaviour
     private void UpdateTimeOfDay()
     {
         m_CurrentTime = m_CurrentTime.AddSeconds(Time.deltaTime * timeMultiplier);
-
+        
         if (timeText != null)
         {
             timeText.text = "Current time : " + m_CurrentTime.ToString("HH:mm");
         }
     }
-
+    
     private void RotateSun()
     {
         float sunLightRotation;
@@ -119,4 +121,21 @@ public class TimeController : MonoBehaviour
 
         return difference;
     }
+
+    private int GetCurrentDay()
+    {
+        return m_CurrentTime.Day;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.m_CurrentTime = data.totalPlayTime;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.totalPlayTime = this.m_CurrentTime;
+    }
+
+   
 }

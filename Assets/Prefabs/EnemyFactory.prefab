@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8466380911879901010}
   - component: {fileID: 8466380911879901011}
-  - component: {fileID: 8466380911879901009}
+  - component: {fileID: 787601640}
   m_Layer: 0
   m_Name: EnemyFactory
   m_TagString: Untagged
@@ -50,7 +50,7 @@ MonoBehaviour:
   heavyTroll: {fileID: 221790227904970493, guid: f907c722f9f6a714eb6afadef76d981e, type: 3}
   earlTroll: {fileID: 1777084791421189859, guid: ba3698625fbf4204b9b5e5f0e7056669, type: 3}
   kingTroll: {fileID: 3288665209575445635, guid: d16505e45f7241c4582cc3350fec816e, type: 3}
---- !u!114 &8466380911879901009
+--- !u!114 &787601640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,6 +59,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8466380911879901020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ae6dbf8772709b4e9c0195f06f4a02a, type: 3}
+  m_Script: {fileID: 11500000, guid: bafaa0c1d27f616488a362d47c65f8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

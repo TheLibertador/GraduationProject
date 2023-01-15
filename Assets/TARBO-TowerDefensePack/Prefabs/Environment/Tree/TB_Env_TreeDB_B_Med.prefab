@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4701379132251544}
   - component: {fileID: 33113835765030718}
   - component: {fileID: 23697036703320702}
+  - component: {fileID: 262498269}
   m_Layer: 0
   m_Name: TB_Env_TreeDB_B_Med
   m_TagString: Untagged
@@ -83,3 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &262498269
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585028184093536}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.173, y: 2.489, z: 3.0010002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2.489, z: 0}
+  m_TimeToStationary: 0.5
