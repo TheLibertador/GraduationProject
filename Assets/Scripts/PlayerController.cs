@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,13 +23,21 @@ public class PlayerController : MonoBehaviour
     public bool jumpInput { get; set; }
     new private Rigidbody m_Rigidbody;
     private CapsuleCollider m_CapsuleCollider;
+
+
+    private int health = 100;
     
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_CapsuleCollider = GetComponent<CapsuleCollider>();
     }
-    
+
+    private void Start()
+    {
+        EventManager.OnPlayerTakeDamage += TakeDamage;
+    }
+
     private void FixedUpdate()
     {
         CheckGrounded();
@@ -101,5 +110,12 @@ public class PlayerController : MonoBehaviour
                 m_Rigidbody.velocity = verticalVelocity + transform.forward * Mathf.Clamp(forwardInput, -1f, 1f) * moveSpeed / 2f;
             }
         }
+    }
+
+
+    private void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log("Player health is ==== " + health);
     }
 }

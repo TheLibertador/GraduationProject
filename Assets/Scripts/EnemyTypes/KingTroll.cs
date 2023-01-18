@@ -12,12 +12,16 @@ public class KingTroll : Troll
     [SerializeField] private EnemyType kingTrollData;
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
+    private int m_Health;
+    private int m_Damage;
 
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
         m_İnitialTarget = GameObject.Find("Target").transform;
         m_Agent.speed = kingTrollData.enemySpeed;
+        m_Health = (int)kingTrollData.enemyHealth;
+        m_Damage = (int)kingTrollData.enemyDamage;
     }
 
     void Start()
@@ -30,5 +34,14 @@ public class KingTroll : Troll
     private void SetAgentDestination()
     {
         m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            EventManager.OnOnPlayerTakeDamage(m_Damage);
+        }
+        
     }
 }

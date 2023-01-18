@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class SmallTroll : Troll
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
     private float m_Health;
+    private int m_Damage;
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class SmallTroll : Troll
         m_İnitialTarget = GameObject.Find("Target").transform;
         m_Agent.speed = smallTrollData.enemySpeed;
         m_Health = smallTrollData.enemyHealth;
+        m_Damage = (int)smallTrollData.enemyDamage;
     }
 
     void Start()
@@ -28,5 +31,11 @@ public class SmallTroll : Troll
     private void SetAgentDestination()
     {
         m_Agent.SetDestination(FindNearestEnemy(smallTrollData.enemyRadius, m_İnitialTarget).position);
+    }
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+        EventManager.OnOnPlayerTakeDamage(m_Damage);
     }
 }
