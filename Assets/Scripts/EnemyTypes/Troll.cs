@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public  class Troll : MonoBehaviour
 {
     protected virtual Transform FindNearestEnemy(float radius, Transform currentTarget)
@@ -31,16 +32,14 @@ public  class Troll : MonoBehaviour
         return currentTarget.transform;
 
     }
-    
-    protected virtual void Walk()
-    {
-        Debug.Log("I walk");
-    }
 
-    protected virtual void Attack()
+    protected void KillTroll(float health, GameObject itself)
     {
-        
+        if (health <= 0)
+        {
+            Destroy(itself);
+            GameManager.Instance.numberOfActiveEnemies--;
+        }
     }
-    
     
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 using TMPro;
 public class TimeController : MonoBehaviour, IDataPersistence
 {
+    public static TimeController Instance { get; private set; }
+    
+    
      [SerializeField]
     private float timeMultiplier;
 
@@ -48,9 +51,19 @@ public class TimeController : MonoBehaviour, IDataPersistence
 
     private TimeSpan m_SunsetTime;
 
- 
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         m_SunriseTime = TimeSpan.FromHours(sunriseHour);
@@ -60,7 +73,6 @@ public class TimeController : MonoBehaviour, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        
         UpdateTimeOfDay();
         RotateSun();
         UpdateLightSettings();
@@ -122,9 +134,18 @@ public class TimeController : MonoBehaviour, IDataPersistence
         return difference;
     }
 
-    private int GetCurrentDay()
+    public int GetCurrentDay()
     {
         return m_CurrentTime.Day;
+    }
+
+    public bool CheckIfSunIsUp()
+    {
+        if (m_CurrentTime.Hour > sunriseHour && m_CurrentTime.Hour < sunsetHour)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void LoadData(GameData data)
