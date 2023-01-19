@@ -56,9 +56,6 @@ public class FileDataHandler
          Directory.CreateDirectory(Path.GetDirectoryName(fullPath) ?? string.Empty);
          string dataToStore = Newtonsoft.Json.JsonConvert.SerializeObject(data);
          
-         
-         Debug.Log(dataToStore);
-
          using (FileStream stream = new FileStream(fullPath, FileMode.Create)) 
          {
             using (StreamWriter streamWriter = new StreamWriter(stream))

@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyWaveSystem : MonoBehaviour, IDataPersistence
+public class EnemyWaveSystem : MonoBehaviour
 {
     private EnemyFactory m_EnemyFactory;
     [SerializeField]private Transform[] instantiateZones = new Transform[4];
+
+    private float instantiateWaitTime = 0.1f;
 
     
     
@@ -26,21 +28,60 @@ public class EnemyWaveSystem : MonoBehaviour, IDataPersistence
 
     private void InstantiateWave(int dayNum)
     {
-        int instantiateZoneIndex = GetRandomInstantiateZone();
         
-            for (int i = 0; i < dayNum * 10f; i++)
+        if (dayNum == 1)
+        {
+            for (int i = 0; i < dayNum * 5f; i++)
             {
-                m_EnemyFactory.InstantiateTroll("kingTroll", instantiateZones[instantiateZoneIndex]);
+                m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
             }
 
-            for (int i = 0; i < dayNum - 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                m_EnemyFactory.InstantiateTroll("kingTroll", instantiateZones[instantiateZoneIndex]);
+                m_EnemyFactory.InstantiateTroll("fastTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
             }
+        }
+        else if (dayNum == 2)
+        {
+            for (int i = 0; i < dayNum * 5f; i++)
+            {
+                m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
+                GameManager.Instance.numberOfActiveEnemies++;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                m_EnemyFactory.InstantiateTroll("fastTroll", instantiateZones[GetRandomInstantiateZone()]);
+                GameManager.Instance.numberOfActiveEnemies++;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                m_EnemyFactory.InstantiateTroll("heavyTroll", instantiateZones[GetRandomInstantiateZone()]);
+                GameManager.Instance.numberOfActiveEnemies++;
+            }
+        }
+        else if (dayNum == 3)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
+                GameManager.Instance.numberOfActiveEnemies++;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                m_EnemyFactory.InstantiateTroll("heavyTroll", instantiateZones[GetRandomInstantiateZone()]);
+                GameManager.Instance.numberOfActiveEnemies++;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                m_EnemyFactory.InstantiateTroll("earlTroll", instantiateZones[GetRandomInstantiateZone()]);
+                GameManager.Instance.numberOfActiveEnemies++;
+            }
+        }
             
-        
     }
 
     private int  GetRandomInstantiateZone()
@@ -48,13 +89,4 @@ public class EnemyWaveSystem : MonoBehaviour, IDataPersistence
         return Random.Range(0, instantiateZones.Length);
     }
     
-    public void LoadData(GameData data)
-    {
-        
-    }
-
-    public void SaveData(GameData data)
-    {
-        
-    }
 }
