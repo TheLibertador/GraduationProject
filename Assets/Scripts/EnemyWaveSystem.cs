@@ -35,12 +35,14 @@ public class EnemyWaveSystem : MonoBehaviour
             {
                 m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
 
             for (int i = 0; i < 2; i++)
             {
                 m_EnemyFactory.InstantiateTroll("fastTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
         }
         else if (dayNum == 2)
@@ -49,17 +51,20 @@ public class EnemyWaveSystem : MonoBehaviour
             {
                 m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
 
             for (int i = 0; i < 3; i++)
             {
                 m_EnemyFactory.InstantiateTroll("fastTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
             for (int i = 0; i < 2; i++)
             {
                 m_EnemyFactory.InstantiateTroll("heavyTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
         }
         else if (dayNum == 3)
@@ -68,17 +73,20 @@ public class EnemyWaveSystem : MonoBehaviour
             {
                 m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
 
             for (int i = 0; i < 5; i++)
             {
                 m_EnemyFactory.InstantiateTroll("heavyTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
             for (int i = 0; i < 2; i++)
             {
                 m_EnemyFactory.InstantiateTroll("earlTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
+                StartCoroutine(Wait());
             }
         }
             
@@ -87,6 +95,11 @@ public class EnemyWaveSystem : MonoBehaviour
     private int  GetRandomInstantiateZone()
     {
         return Random.Range(0, instantiateZones.Length);
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(instantiateWaitTime);
     }
     
 }
