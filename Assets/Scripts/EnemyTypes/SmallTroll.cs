@@ -11,6 +11,7 @@ public class SmallTroll : Troll
     private NavMeshAgent m_Agent;
     private float m_Health;
     private int m_Damage;
+    private Animator m_Animator;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class SmallTroll : Troll
         m_Agent.speed = smallTrollData.enemySpeed;
         m_Health = smallTrollData.enemyHealth;
         m_Damage = (int)smallTrollData.enemyDamage;
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -34,8 +36,13 @@ public class SmallTroll : Troll
     }
 
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionStay(Collision other)
     {
-        EventManager.OnOnPlayerTakeDamage(m_Damage);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            m_Animator.SetTrigger("Attack");
+            EventManager.OnOnPlayerTakeDamage(m_Damage);
+        }
+        
     }
 }

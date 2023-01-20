@@ -14,6 +14,7 @@ public class KingTroll : Troll
     private NavMeshAgent m_Agent;
     private int m_Health;
     private int m_Damage;
+    private Animator m_Animator;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class KingTroll : Troll
         m_Agent.speed = kingTrollData.enemySpeed;
         m_Health = (int)kingTrollData.enemyHealth;
         m_Damage = (int)kingTrollData.enemyDamage;
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -36,10 +38,11 @@ public class KingTroll : Troll
         m_Agent.SetDestination(FindNearestEnemy(kingTrollData.enemyRadius, m_İnitialTarget).position);
     }
     
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            m_Animator.SetTrigger("Attack");
             EventManager.OnOnPlayerTakeDamage(m_Damage);
         }
         

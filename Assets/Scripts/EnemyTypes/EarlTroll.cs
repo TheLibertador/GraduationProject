@@ -9,6 +9,8 @@ public class EarlTroll : Troll
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
     private float m_Health;
+    private int m_Damage;
+    private Animator m_Animator;
 
     private void Awake()
     {
@@ -16,6 +18,8 @@ public class EarlTroll : Troll
         m_İnitialTarget = GameObject.Find("Target").transform;
         m_Agent.speed = earlTrollData.enemySpeed;
         m_Health = earlTrollData.enemyHealth;
+        m_Damage = (int)earlTrollData.enemyDamage;
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -28,5 +32,15 @@ public class EarlTroll : Troll
     private void SetAgentDestination()
     {
         m_Agent.SetDestination(FindNearestEnemy(earlTrollData.enemyRadius, m_İnitialTarget).position);
+    }
+    
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            m_Animator.SetTrigger("Attack");
+            EventManager.OnOnPlayerTakeDamage(m_Damage);
+        }
+        
     }
 }

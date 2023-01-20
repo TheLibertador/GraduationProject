@@ -7,12 +7,18 @@ public class HeavyTroll : Troll
     [SerializeField] private EnemyType heavyTrollData;
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
+    private int m_Health;
+    private int m_Damage;
+    private Animator m_Animator;
 
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
         m_İnitialTarget = GameObject.Find("Target").transform;
         m_Agent.speed = heavyTrollData.enemySpeed;
+        m_Health = (int)heavyTrollData.enemyHealth;
+        m_Damage = (int)heavyTrollData.enemyDamage;
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -25,5 +31,14 @@ public class HeavyTroll : Troll
     private void SetAgentDestination()
     {
         m_Agent.SetDestination(FindNearestEnemy(heavyTrollData.enemyRadius, m_İnitialTarget).position);
+    }
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            m_Animator.SetTrigger("Attack");
+            EventManager.OnOnPlayerTakeDamage(m_Damage);
+        }
+        
     }
 }

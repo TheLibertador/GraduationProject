@@ -26,11 +26,14 @@ public class PlayerController : MonoBehaviour
 
 
     private int health = 100;
+    private Animator m_Animator;
     
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_CapsuleCollider = GetComponent<CapsuleCollider>();
+        m_Animator = GetComponentInChildren<Animator>();
+
     }
 
     private void Start()
@@ -117,5 +120,19 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         Debug.Log("Player health is ==== " + health);
+
+        if (health <= 0f)
+        {
+            m_Animator.SetTrigger("Die");
+            StartCoroutine(Wait());
+            
+
+        }
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }
