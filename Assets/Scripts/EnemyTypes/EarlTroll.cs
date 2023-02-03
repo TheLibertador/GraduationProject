@@ -15,7 +15,7 @@ public class EarlTroll : Troll
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
-        m_İnitialTarget = GameObject.Find("Target").transform;
+        m_İnitialTarget = GameObject.FindWithTag("Target").transform;
         m_Agent.speed = earlTrollData.enemySpeed;
         m_Health = earlTrollData.enemyHealth;
         m_Damage = (int)earlTrollData.enemyDamage;

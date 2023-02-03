@@ -16,7 +16,7 @@ public class SmallTroll : Troll
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
-        m_İnitialTarget = GameObject.Find("Target").transform;
+        m_İnitialTarget = GameObject.FindWithTag("Target").transform;
         m_Agent.speed = smallTrollData.enemySpeed;
         m_Health = smallTrollData.enemyHealth;
         m_Damage = (int)smallTrollData.enemyDamage;

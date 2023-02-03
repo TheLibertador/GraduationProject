@@ -19,7 +19,7 @@ public class KingTroll : Troll
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
-        m_İnitialTarget = GameObject.Find("Target").transform;
+        m_İnitialTarget = GameObject.FindWithTag("Target").transform;
         m_Agent.speed = kingTrollData.enemySpeed;
         m_Health = (int)kingTrollData.enemyHealth;
         m_Damage = (int)kingTrollData.enemyDamage;
