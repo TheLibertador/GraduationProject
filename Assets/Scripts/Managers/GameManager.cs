@@ -9,6 +9,23 @@ public class GameManager : MonoBehaviour
    public static GameManager Instance { get; private set;}
    
    public int numberOfActiveEnemies = 0;
+   
+   public enum PlayerStates
+   {
+       alive,
+       dead
+   }
+
+   public PlayerStates playerState;
+   
+   
+   public enum GameState
+   {
+       ongoing,
+       build,
+       pause,
+       fail
+   }
 
 
    private void Awake()
@@ -21,5 +38,9 @@ public class GameManager : MonoBehaviour
       {
           Instance = this;
       }
+
+      playerState = PlayerStates.alive;
    }
+
+   
 }

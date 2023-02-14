@@ -36,7 +36,8 @@ public class HeavyTroll : Troll
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            m_Animator.SetTrigger("Attack");
+            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+                m_Animator.SetTrigger("Attack");
             EventManager.OnOnPlayerTakeDamage(m_Damage);
         }
         

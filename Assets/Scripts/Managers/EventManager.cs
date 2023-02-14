@@ -6,10 +6,10 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public delegate void PlayerTakeDamageEvent(int damage);
-    public static event PlayerTakeDamageEvent OnPlayerTakeDamage;
+    public static event PlayerTakeDamageEvent OnPlayerTakeDamageEvent;
 
     public static void OnOnPlayerTakeDamage(int damage)
     {
-        OnPlayerTakeDamage?.Invoke(damage);
+        OnPlayerTakeDamageEvent?.Invoke(damage);
     }
 }

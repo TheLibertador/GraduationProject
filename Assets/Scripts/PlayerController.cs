@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        EventManager.OnPlayerTakeDamage += TakeDamage;
+        EventManager.OnPlayerTakeDamageEvent += PlayerTakeDamageEvent;
     }
 
     private void FixedUpdate()
@@ -116,23 +116,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void TakeDamage(int damage)
+    private void PlayerTakeDamageEvent(int damage)
     {
         health -= damage;
-        Debug.Log("Player health is ==== " + health);
-
         if (health <= 0f)
         {
-            m_Animator.SetTrigger("Die");
-            StartCoroutine(Wait());
-            
+            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+                m_Animator.SetTrigger("Die");
 
+            GameManager.Instance.playerState = GameManager.PlayerStates.dead;
         }
     }
-
-    private IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
-    }
+    
 }
