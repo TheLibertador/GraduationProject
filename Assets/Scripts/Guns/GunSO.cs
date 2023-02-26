@@ -6,15 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Gun Type", menuName = "Gun")]
 public class GunSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float damage;
+    public float fireRate;
+    public int clipSize;
 }

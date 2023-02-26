@@ -19,13 +19,15 @@ public class GameManager : MonoBehaviour
    public PlayerStates playerState;
    
    
-   public enum GameState
+   public enum GameStates
    {
        ongoing,
        build,
        pause,
        fail
    }
+
+   public GameStates gameState;
 
 
    private void Awake()

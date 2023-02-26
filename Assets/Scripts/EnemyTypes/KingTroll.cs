@@ -47,5 +47,13 @@ public class KingTroll : Troll
             EventManager.OnOnPlayerTakeDamage(m_Damage);
         }
         
+        if (other.gameObject.CompareTag("Target"))
+        {
+            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+                m_Animator.SetTrigger("Attack");
+            
+            EventManager.OnOnTargetTakeDamage(m_Damage);
+        }
+        
     }
 }

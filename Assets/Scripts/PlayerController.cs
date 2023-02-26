@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
                 m_Animator.SetTrigger("Die");
 
             GameManager.Instance.playerState = GameManager.PlayerStates.dead;
+            var b = m_Rigidbody.constraints == RigidbodyConstraints.FreezeAll;
         }
     }
     
