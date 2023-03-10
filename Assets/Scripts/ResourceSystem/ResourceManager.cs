@@ -6,37 +6,37 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    private Dictionary<string, float> m_Resources = new Dictionary<string, float>()
+    public static ResourceManager Instance { get; private set;}
+    
+    private Dictionary<string, int> m_Resources = new Dictionary<string, int>()
     {
-        {"wood", 0f}, {"iron", 0f}, {"gold", 0f}
+        {"wood", 0}, {"iron", 0}, {"gold", 0}
     };
 
-
-    private void Start()
+    private void Awake()
     {
-        Debug.Log(GetResourceValue("wood"));
-        AddResource("wood", 545f);
-        SpendResource("wood", 300f);
-        
-        Debug.Log(GetResourceValue("wood"));
-        
-        AddResourceType("hodor", 0f);
-        
-        Debug.Log(GetResourceValue("hodor"));
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
+    
 
-
-    private void AddResourceType(string id, float value)
+    public void AddResourceType(string id, int value)
     {
         m_Resources.Add(id, value);
     }
 
-    private float GetResourceValue(string id)
+    public float GetResourceValue(string id)
     {
         return m_Resources[id];
     }
 
-    private bool TrySpendResource(string id, float spendValue)
+    public bool TrySpendResource(string id, int spendValue)
     {
         if (m_Resources[id] > spendValue)
         {
@@ -48,12 +48,12 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    private void AddResource(string id, float value)
+    public void AddResource(string id, int value)
     {
         m_Resources[id] += value;
     }
 
-    private void SpendResource(string id, float value)
+    public void SpendResource(string id, int value)
     {
         m_Resources[id] -= value;
     }
