@@ -10,7 +10,7 @@ public class ResourceManager : MonoBehaviour
     
     private Dictionary<string, int> m_Resources = new Dictionary<string, int>()
     {
-        {"wood", 0}, {"iron", 0}, {"gold", 0}
+        {"wood", 0}, {"iron", 0}, {"gold", 0}, {"stone", 0}
     };
 
     private void Awake()
