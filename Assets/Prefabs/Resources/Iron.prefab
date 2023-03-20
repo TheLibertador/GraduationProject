@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2063299329659163086}
   - component: {fileID: 2063299329659162929}
+  - component: {fileID: 4653917437077380717}
   m_Layer: 0
   m_Name: Iron
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceData: {fileID: 11400000, guid: a3ecce1d3f340a943861081570d2c5e4, type: 2}
+--- !u!65 &4653917437077380717
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063299329659162928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51573616, y: 0.42184833, z: 0.63433146}
+  m_Center: {x: 0.0049414337, y: 0.017295048, z: -0.01482439}
 --- !u!1001 &4398497809823917772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,15 +77,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 816c3e37a32a7f34fbefe884f50f54eb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 816c3e37a32a7f34fbefe884f50f54eb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 816c3e37a32a7f34fbefe884f50f54eb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 816c3e37a32a7f34fbefe884f50f54eb, type: 3}
       propertyPath: m_LocalPosition.x

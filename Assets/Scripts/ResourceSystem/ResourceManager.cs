@@ -24,11 +24,22 @@ public class ResourceManager : MonoBehaviour
             Instance = this;
         }
     }
-    
 
+    public Dictionary<string, int> GetResourceDictionary()
+    {
+        return m_Resources;
+    }
     public void AddResourceType(string id, int value)
     {
-        m_Resources.Add(id, value);
+        if (CheckForNewResource(id))
+        {
+            m_Resources.Add(id, value);
+        }
+        else
+        {
+            Debug.Log("Something went wrong");
+        }
+       
     }
 
     public float GetResourceValue(string id)
@@ -56,6 +67,18 @@ public class ResourceManager : MonoBehaviour
     public void SpendResource(string id, int value)
     {
         m_Resources[id] -= value;
+    }
+
+    public bool CheckForNewResource(string newId)
+    {
+        foreach (var item in m_Resources)
+        {
+            if (item.Key == newId)
+            {
+                return false;
+            }
+        }
+        return true;
     }
     
 }
