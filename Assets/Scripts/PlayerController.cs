@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public float speed = 5f;
     public GameObject bulletPrefab;
+    public GameObject MuzzleFlashParticle;
     public Transform bulletSpawnPoint;
     public float fireDelay = 0.1f;
 
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
             _fireTimer = fireDelay;
             
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.Euler(90,0,0));
+            Instantiate(MuzzleFlashParticle, bulletSpawnPoint.position, quaternion.identity, gameObject.transform);
             var bulletRotation = bullet.transform.rotation;
             bulletRotation.eulerAngles = new Vector3(bulletRotation.eulerAngles.x, gameObject.transform.rotation.eulerAngles.y, bulletRotation.eulerAngles.z);
             bullet.transform.rotation = bulletRotation;
