@@ -139,6 +139,12 @@ public class TimeController : MonoBehaviour, IDataPersistence
         return m_CurrentTime.Day;
     }
 
+    public int GetCurrentHour()
+    {
+
+        return m_CurrentTime.Hour;
+    }
+
     public bool CheckIfSunIsUp()
     {
         if (m_CurrentTime.Hour > sunriseHour && m_CurrentTime.Hour < sunsetHour)
