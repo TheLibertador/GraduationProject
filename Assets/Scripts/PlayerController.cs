@@ -1,121 +1,84 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Tooltip("Maximum slope the character can jump on")]
-    [Range(5f, 60f)]
-    public float slopeLimit = 45f;
-    [Tooltip("Move speed in meters/second")]
-    public float moveSpeed = 5f;
-    [Tooltip("Turn speed in degrees/second, left (+) or right (-)")]     
-    public float turnSpeed = 300;
-    [Tooltip("Whether the character can jump")]
-    public bool allowJump = false;
-    [Tooltip("Upward speed to apply when jumping in meters/second")]
-    public float jumpSpeed = 4f;
-    
-    public bool ısGrounded { get; private set; }
-    public float forwardInput { get; set; }
-    public float turnInput { get; set; }
-    public bool jumpInput { get; set; }
-    new private Rigidbody m_Rigidbody;
-    private CapsuleCollider m_CapsuleCollider;
+    public Camera mainCamera;
+    public float speed = 5f;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
+    public float fireDelay = 0.1f;
 
+    private float _fireTimer;
 
     private int health = 100;
+    
+    private Rigidbody m_Rigidbody;
     private Animator m_Animator;
     
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
-        m_CapsuleCollider = GetComponent<CapsuleCollider>();
         m_Animator = GetComponentInChildren<Animator>();
+        mainCamera = Camera.main;
 
     }
-
     private void Start()
     {
         EventManager.OnPlayerTakeDamageEvent += PlayerTakeDamageEvent;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        CheckGrounded();
-        ProcessActions();
-        
-        int vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-        int horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-        bool jump = Input.GetKey(KeyCode.Space);
-        forwardInput = vertical;
-        turnInput = horizontal;
-        jumpInput = jump;
-    }
-    
-    /// <summary>
-    /// Checks whether the character is on the ground and updates <see cref="ısGrounded"/>
-    /// </summary>
-    private void CheckGrounded()
-    {
-        ısGrounded = false;
-        float capsuleHeight = Mathf.Max(m_CapsuleCollider.radius * 2f, m_CapsuleCollider.height);
-        Vector3 capsuleBottom = transform.TransformPoint(m_CapsuleCollider.center - Vector3.up * capsuleHeight / 2f);
-        float radius = transform.TransformVector(m_CapsuleCollider.radius, 0f, 0f).magnitude;
-        Ray ray = new Ray(capsuleBottom + transform.up * .01f, -transform.up);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, radius * 5f))
+        // Move the player with WASD keys
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(x, 0f, z) * speed * Time.deltaTime;
+        if (z + x > 0)
         {
-            float normalAngle = Vector3.Angle(hit.normal, transform.up);
-            if (normalAngle < slopeLimit)
-            {
-                float maxDist = radius / Mathf.Cos(Mathf.Deg2Rad * normalAngle) - radius + .02f;
-                if (hit.distance < maxDist)
-                    ısGrounded = true;
-            }
-        }
-    }
-    
-    /// <summary>
-    /// Processes input actions and converts them into movement
-    /// </summary>
-    private void ProcessActions()
-    {
-        // Process Turning
-        if (turnInput != 0f)
-        {
-            float angle = Mathf.Clamp(turnInput, -1f, 1f) * turnSpeed;
-            transform.Rotate(Vector3.up, Time.fixedDeltaTime * angle);
-        }
-        // Process Movement/Jumping
-        if (ısGrounded)
-        {
-            // Reset the velocity
-            m_Rigidbody.velocity = Vector3.zero;
-            // Check if trying to jump
-            if (jumpInput && allowJump)
-            {
-                // Apply an upward velocity to jump
-                m_Rigidbody.velocity += Vector3.up * jumpSpeed;
-            }
-
-            // Apply a forward or backward velocity based on player input
-            m_Rigidbody.velocity += transform.forward * Mathf.Clamp(forwardInput, -1f, 1f) * moveSpeed;
+            m_Animator.SetBool("Moving", true);
         }
         else
         {
-            // Check if player is trying to change forward/backward movement while jumping/falling
-            if (!Mathf.Approximately(forwardInput, 0f))
-            {
-                // Override just the forward velocity with player input at half speed
-                Vector3 verticalVelocity = Vector3.Project(m_Rigidbody.velocity, Vector3.up);
-                m_Rigidbody.velocity = verticalVelocity + transform.forward * Mathf.Clamp(forwardInput, -1f, 1f) * moveSpeed / 2f;
-            }
+            m_Animator.SetBool("Moving", false);
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            m_Animator.SetBool("Shooting", true);
+        }
+        else
+        {
+            m_Animator.SetBool("Shooting", false);
+        }
+        
+        transform.Translate(movement, Space.Self);
+
+        // Rotate the player to face the mouse position
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 target = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            transform.LookAt(target);
+        }
+
+        // Fire a bullet on Mouse0 click
+        _fireTimer -= Time.deltaTime;
+        if (Input.GetButton("Fire1") && _fireTimer <= 0f)
+        {
+            _fireTimer = fireDelay;
+            
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.Euler(90,0,0));
+            var bulletRotation = bullet.transform.rotation;
+            bulletRotation.eulerAngles = new Vector3(bulletRotation.eulerAngles.x, gameObject.transform.rotation.eulerAngles.y, bulletRotation.eulerAngles.z);
+            bullet.transform.rotation = bulletRotation;
+            
+            //bullet.GetComponent<Rigidbody>().velocity = bulletDirection.normalized * bulletSpeed;
         }
     }
-
-
     private void PlayerTakeDamageEvent(int damage)
     {
         health -= damage;
@@ -129,5 +92,4 @@ public class PlayerController : MonoBehaviour
             var b = m_Rigidbody.constraints == RigidbodyConstraints.FreezeAll;
         }
     }
-    
 }
