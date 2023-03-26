@@ -39,10 +39,22 @@ public class GameManager : MonoBehaviour
       else
       {
           Instance = this;
+          DontDestroyOnLoad(this.gameObject);
       }
 
       playerState = PlayerStates.alive;
    }
 
-   
+   private void Update()
+   {
+       CheckGameFailed();
+   }
+
+   private void CheckGameFailed()
+   {
+       if (gameState == GameStates.fail || playerState == PlayerStates.dead)
+       {
+           EventManager.OnOnGameFailed();
+       }
+   }
 }

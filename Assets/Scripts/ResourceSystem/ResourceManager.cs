@@ -22,13 +22,10 @@ public class ResourceManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
-
-    public Dictionary<string, int> GetResourceDictionary()
-    {
-        return m_Resources;
-    }
+    
     public void AddResourceType(string id, int value)
     {
         if (CheckForNewResource(id))

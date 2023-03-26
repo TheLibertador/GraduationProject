@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     public delegate void PlayerTakeDamageEvent(int damage);
     public static event PlayerTakeDamageEvent OnPlayerTakeDamageEvent;
 
@@ -23,4 +27,17 @@ public class EventManager : MonoBehaviour
     {
         OnTargetTakeDamageEvent?.Invoke(damage);
     }
+
+    public delegate void GameFailedEvent();
+    public static event GameFailedEvent OnGameFailed;
+
+    public static void OnOnGameFailed()
+    {
+        OnGameFailed?.Invoke();
+    }
+
+
+    
+
+   
 }

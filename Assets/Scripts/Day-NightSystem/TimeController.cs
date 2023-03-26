@@ -61,6 +61,7 @@ public class TimeController : MonoBehaviour, IDataPersistence
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 

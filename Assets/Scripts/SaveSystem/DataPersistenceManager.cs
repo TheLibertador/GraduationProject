@@ -32,7 +32,6 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.m_DataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
     }
 
     public void NewGame()
@@ -80,13 +79,12 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool GetGameData()
     {
-        if (this.m_GameData == null)
+        if(this.m_GameData == null)
         {
             return false;
         }
-        else
-        {
-            return true;
-        }
+        
+        return true;
+        
     }
 }
