@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,15 @@ public class BuildingManager : MonoBehaviour
 
     public float gridSize;
     private bool gridOn = true;
+    public bool canPlace = true;
+    public int rotateAmount = 90;
+
+
+
+    private void Start()
+    {
+        
+    }
 
     float RoundToNearestGrid(float pos)
     {
@@ -31,6 +41,7 @@ public class BuildingManager : MonoBehaviour
 
         return pos;
     }
+
 
     private void FixedUpdate()
     {
@@ -62,15 +73,30 @@ public class BuildingManager : MonoBehaviour
             }
            
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && canPlace)
             {
                 PlaceObject();
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RotateObject();
+            }
+            
         }   
     }
 
+    public void RotateObject()
+    {
+        pendingObj.transform.Rotate(Vector3.up, rotateAmount);
+    }
     void PlaceObject()
     {
+        pendingObj.GetComponent<MeshCollider>().isTrigger = false;
+        var rb =pendingObj.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        Destroy(pendingObj.GetComponent<CheckPlacement>());
         pendingObj = null;
     }
     

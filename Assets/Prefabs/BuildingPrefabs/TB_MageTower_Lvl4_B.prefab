@@ -94,9 +94,11 @@ GameObject:
   - component: {fileID: 4119543975483680584}
   - component: {fileID: 4133639454106560516}
   - component: {fileID: 4141027602092092294}
+  - component: {fileID: -2049892147900903273}
+  - component: {fileID: -2750440007782416551}
   m_Layer: 0
   m_Name: TB_MageTower_Lvl4_B
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,3 +169,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-2049892147900903273
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116524567239714482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 2b524ad204e38474691761960599b115, type: 3}
+--- !u!114 &-2750440007782416551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4116524567239714482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cd367b554faf14189ef1574be658da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
