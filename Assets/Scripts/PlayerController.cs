@@ -11,6 +11,13 @@ public class PlayerController : MonoBehaviour
     public GameObject MuzzleFlashParticle;
     public Transform bulletSpawnPoint;
     public float fireDelay = 0.1f;
+    public bool isBuildModeEnabled = false;
+
+    public bool İsBuildModeEnabled
+    {
+        get => isBuildModeEnabled;
+        set => isBuildModeEnabled = value;
+    }
 
     private float _fireTimer;
 
@@ -46,7 +53,7 @@ public class PlayerController : MonoBehaviour
             m_Animator.SetBool("Moving", false);
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !isBuildModeEnabled)
         {
             m_Animator.SetBool("Shooting", true);
         }
@@ -68,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         // Fire a bullet on Mouse0 click
         _fireTimer -= Time.deltaTime;
-        if (Input.GetButton("Fire1") && _fireTimer <= 0f)
+        if (Input.GetButton("Fire1") && _fireTimer <= 0f && !isBuildModeEnabled)
         {
             _fireTimer = fireDelay;
             
