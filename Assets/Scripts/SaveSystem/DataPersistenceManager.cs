@@ -47,7 +47,6 @@ public class DataPersistenceManager : MonoBehaviour
         {
             Debug.Log("There are no prior game data, initializing new gameData");
             NewGame();
-            
         }
        
         foreach (IDataPersistence dataPersistenceObj in m_DataPersistenceObjects)
@@ -77,5 +76,17 @@ public class DataPersistenceManager : MonoBehaviour
             .OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    public bool GetGameData()
+    {
+        if (this.m_GameData == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
