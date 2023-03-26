@@ -31,7 +31,6 @@ namespace Guns
             if (distance >= destroyDistance)
             {
                 Destroy(gameObject);
-                Debug.Log("GameObject has reached the specified distance.");
             }
         }
     }
