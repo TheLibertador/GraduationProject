@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(x, 0f, z) * speed * Time.deltaTime;
-        if (z + x > 0)
+        if (z + x != 0)
         {
             m_Animator.SetBool("Moving", true);
         }
