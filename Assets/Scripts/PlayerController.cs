@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private float _fireTimer;
 
-    private int health = 100;
+    private int health = 300;
     
     private Rigidbody m_Rigidbody;
     private Animator m_Animator;
@@ -100,5 +100,10 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.gameState = GameManager.GameStates.fail;
             var b = m_Rigidbody.constraints == RigidbodyConstraints.FreezeAll;
         }
+    }
+
+    public float GetPlayerHealth()
+    {
+        return health;
     }
 }

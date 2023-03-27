@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallTrollData
   m_EditorClassIdentifier: 
   enemyTypeName: Small
-  enemyHealth: 100
-  enemySpeed: 5
+  enemyHealth: 10
+  enemySpeed: 4
   enemyDamage: 1
   enemyRadius: 10

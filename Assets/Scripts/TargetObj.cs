@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TargetObj : MonoBehaviour
 {
-   private float m_Health = 100f;
+   [SerializeField] private float health = 1000f;
 
    private void Start()
    {
@@ -14,9 +14,9 @@ public class TargetObj : MonoBehaviour
 
    private void GetDamage(int damage)
    {
-      m_Health -= damage;
+      health -= damage;
       
-      if (m_Health <= 0f)
+      if (health <= 0f)
       {
          GameManager.Instance.gameState = GameManager.GameStates.fail;
       }

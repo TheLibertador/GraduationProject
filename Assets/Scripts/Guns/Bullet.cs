@@ -5,9 +5,9 @@ namespace Guns
 {
     public class Bullet : MonoBehaviour
     {
-        public float moveSpeed = 20f;
-        public float destroyDistance = 50f;
-        private float damage = 3f;
+        [SerializeField] private float moveSpeed = 20f;
+        [SerializeField] private float destroyDistance = 50f;
+        [SerializeField] private float damage = 5f;
         
         private Vector3 _forwardDirection;
         private Vector3 startingPosition;

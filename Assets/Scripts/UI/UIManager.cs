@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    
+    public static UIManager Instance { get; private set;}
+    
     [Header("Buttons")] 
     [SerializeField] private Button ContinueButton;
 
@@ -18,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject hudPanel;
     [SerializeField] private GameObject failPanel;
+
+    [Header("Sliders")] [SerializeField] private Slider healthSlider;
 
     [Header("Canvas's")] 
     [SerializeField] private Canvas mainMenuCanvas;
@@ -29,11 +34,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text ironText;
     [SerializeField] private TMP_Text stoneText;
 
-
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
         CheckContinueButtonActivity();
         EventManager.OnGameFailed += ActivateFailPanel;
     }
@@ -41,15 +56,18 @@ public class UIManager : MonoBehaviour
     private void FixedUpdate()
     {
         DisplayResourceAmounts();
+        
     }
 
     public void StartNewGame()
     {
+        GameManager.Instance.gameState = GameManager.GameStates.ongoing;
+        GameManager.Instance.playerState = GameManager.PlayerStates.alive;
         DataPersistenceManager.Instance.NewGame();
         mainMenuCanvas.enabled = false;
         hudPanel.SetActive(true);
-        failPanel.SetActive(false);
         SceneManager.LoadScene("Prototype2_Scene");
+        failPanel.SetActive(false);
     }
 
     public void ActivateFailPanel()
@@ -61,8 +79,9 @@ public class UIManager : MonoBehaviour
 
     public void ReturnMainMenu()
     {
+        GameManager.Instance.gameState = GameManager.GameStates.ongoing;
+        GameManager.Instance.playerState = GameManager.PlayerStates.alive;
         SceneManager.LoadScene("MainMenu");
-        
     }
 
     public void DisplayResourceAmounts()
@@ -72,6 +91,8 @@ public class UIManager : MonoBehaviour
         ironText.text = ResourceManager.Instance.GetResourceValue("iron").ToString();
         stoneText.text = ResourceManager.Instance.GetResourceValue("stone").ToString();
     }
+
+    
     
     #region ContinueButton
         private void CheckContinueButtonActivity()

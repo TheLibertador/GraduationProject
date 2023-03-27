@@ -77,6 +77,7 @@ public class TimeController : MonoBehaviour, IDataPersistence
         UpdateTimeOfDay();
         RotateSun();
         UpdateLightSettings();
+       
     }
 
     private void UpdateTimeOfDay()
@@ -142,8 +143,12 @@ public class TimeController : MonoBehaviour, IDataPersistence
 
     public int GetCurrentHour()
     {
-
         return m_CurrentTime.Hour;
+    }
+
+    public void ResetTime()
+    {
+        m_CurrentTime = new DateTime();
     }
 
     public bool CheckIfSunIsUp()

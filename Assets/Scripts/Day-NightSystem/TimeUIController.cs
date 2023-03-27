@@ -7,7 +7,6 @@ public class TimeUIController : MonoBehaviour
     private int tempTime = 0;
     void FixedUpdate()
     {
-        Debug.Log(TimeController.Instance.GetCurrentHour());
         RotateClock();
     }
     

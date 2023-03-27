@@ -18,8 +18,8 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
-            Debug.LogError("There are more than one instance of the Data persistence object");
+            Destroy(this.gameObject);
+           
         }
         else
         {
@@ -36,13 +36,13 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        this.m_GameData = new GameData();
+        m_GameData = new GameData();
     }
 
     public void LoadGame()
     {
-        this.m_GameData = dataHandler.Load();
-        if (this.m_GameData == null)
+        m_GameData = dataHandler.Load();
+        if (m_GameData == null)
         {
             Debug.Log("There are no prior game data, initializing new gameData");
             NewGame();
@@ -79,7 +79,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool GetGameData()
     {
-        if(this.m_GameData == null)
+        if(m_GameData == null)
         {
             return false;
         }

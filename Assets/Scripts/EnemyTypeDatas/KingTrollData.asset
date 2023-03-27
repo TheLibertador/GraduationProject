@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeName: King
   enemyHealth: 100
-  enemySpeed: 5
+  enemySpeed: 4
   enemyDamage: 20
+  enemyRadius: 10
