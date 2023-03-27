@@ -7,7 +7,7 @@ public class HeavyTroll : Troll
     [SerializeField] private EnemyType heavyTrollData;
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
-    private int m_Health;
+    public float m_Health;
     private int m_Damage;
     private Animator m_Animator;
 

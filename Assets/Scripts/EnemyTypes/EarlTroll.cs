@@ -8,7 +8,7 @@ public class EarlTroll : Troll
     [SerializeField] private EnemyType earlTrollData;
     private Transform m_İnitialTarget;
     private NavMeshAgent m_Agent;
-    private float m_Health;
+    public float m_Health;
     private int m_Damage;
     private Animator m_Animator;
 

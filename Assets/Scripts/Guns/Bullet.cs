@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Guns
@@ -6,7 +7,8 @@ namespace Guns
     {
         public float moveSpeed = 20f;
         public float destroyDistance = 50f;
-
+        private float damage = 3f;
+        
         private Vector3 _forwardDirection;
         private Vector3 startingPosition;
         void Start()
@@ -33,5 +35,62 @@ namespace Guns
                 Destroy(gameObject);
             }
         }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                if (other.gameObject.TryGetComponent<FastTroll>(out FastTroll enemyFastTroll))
+                {
+                    enemyFastTroll.m_Health -= damage;
+                    if (enemyFastTroll.m_Health <= 0)
+                    {
+                        Destroy(enemyFastTroll.gameObject);
+                    }
+                    Destroy(gameObject);
+                }
+                else if (other.gameObject.TryGetComponent<EarlTroll>(out EarlTroll enemyEarlTroll))
+                {
+                    enemyEarlTroll.m_Health -= damage;
+                    if (enemyEarlTroll.m_Health <= 0)
+                    {
+                        Destroy(enemyEarlTroll.gameObject);
+                    }
+                    Destroy(gameObject);
+                }
+                else if (other.gameObject.TryGetComponent<HeavyTroll>(out HeavyTroll enemyHeavyTroll))
+                {
+                    enemyHeavyTroll.m_Health -= damage;
+                    if (enemyHeavyTroll.m_Health <= 0)
+                    {
+                        Destroy(enemyHeavyTroll.gameObject);
+                    }
+                    Destroy(gameObject);
+                }
+                else if (other.gameObject.TryGetComponent<KingTroll>(out KingTroll enemyKingTroll))
+                {
+                    enemyKingTroll.m_Health -= damage;
+                    if (enemyKingTroll.m_Health <= 0)
+                    {
+                        Destroy(enemyKingTroll.gameObject);
+                    }
+                    Destroy(gameObject);
+                }
+                else if (other.gameObject.TryGetComponent<SmallTroll>(out SmallTroll enemySmallTroll))
+                {
+                    enemySmallTroll.m_Health -= damage;
+                    if (enemySmallTroll.m_Health <= 0)
+                    {
+                        Destroy(enemySmallTroll.gameObject);
+                    }
+                    Destroy(gameObject);
+                }
+            }
+            else if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Rock"))
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 }
