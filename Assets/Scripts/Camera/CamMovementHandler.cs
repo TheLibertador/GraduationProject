@@ -19,7 +19,7 @@ public class CamMovementHandler : MonoBehaviour
    private void LateUpdate()
    {
       MoveCamera();
-      LookAtPlayer();
+      //LookAtPlayer();
    }
 
 

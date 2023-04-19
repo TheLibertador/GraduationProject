@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         // Move the player with WASD keys
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(x, 0f, z) * speed * Time.deltaTime;
+        Vector3 movement = new Vector3(x, 0f, z) * speed;
         if (z + x != 0)
         {
             m_Animator.SetBool("Moving", true);
@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
         {
             m_Animator.SetBool("Shooting", false);
         }
-        
-        transform.Translate(movement, Space.Self);
+
+        m_Rigidbody.velocity = -movement;
 
         // Rotate the player to face the mouse position
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
