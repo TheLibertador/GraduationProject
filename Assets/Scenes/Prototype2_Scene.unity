@@ -5784,7 +5784,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  gridSize: 2.15
+  gridSize: 1
   canPlace: 1
   rotateAmount: 90
 --- !u!1001 &347066329
