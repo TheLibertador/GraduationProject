@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour
@@ -65,6 +66,10 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
+        if (pendingObj!= null)
+        {
+            Destroy(pendingObj);
+        }
         pendingObj = Instantiate(objects[index], pos, transform.rotation);
     }
     
@@ -86,7 +91,7 @@ public class BuildingManager : MonoBehaviour
                 pendingObj.transform.position = pos;
             }
 
-            if (Input.GetMouseButtonDown(0) && canPlace)
+            if (Input.GetMouseButtonDown(0) && canPlace && build.activeSelf && !EventSystem.current.IsPointerOverGameObject())
             {
                 PlaceObject();
             }
@@ -142,6 +147,5 @@ public class BuildingManager : MonoBehaviour
         Destroy(pendingObj.GetComponent<CheckPlacement>());
         pendingObj = null;
     }
-    
     
 }
