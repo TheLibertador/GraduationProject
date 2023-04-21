@@ -5785,8 +5785,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   gridSize: 1
+  gridOn: 1
   canPlace: 1
   rotateAmount: 90
+  build: {fileID: 1720926587}
+  _playerController: {fileID: 4019393337586364933}
+  grid: {fileID: 1323252686}
 --- !u!1001 &347066329
 PrefabInstance:
   m_ObjectHideFlags: 0

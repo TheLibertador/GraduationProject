@@ -18,16 +18,15 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     public float gridSize;
-    private bool gridOn = true;
+    public bool gridOn = true;
     public bool canPlace = true;
     public int rotateAmount = 90;
+    public GameObject build;
+    private bool isBuildActive = false;
+    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private GameObject grid;
 
-
-
-    private void Start()
-    {
-        
-    }
+    
 
     float RoundToNearestGrid(float pos)
     {
@@ -62,16 +61,19 @@ public class BuildingManager : MonoBehaviour
     {
         if (pendingObj != null)
         {
-            if (gridOn)
+            if (gridOn && build.activeSelf)
             {
                 pendingObj.transform.position = new Vector3(RoundToNearestGrid(pos.x),
                     RoundToNearestGrid(pos.y), RoundToNearestGrid(pos.z));
+            }
+            else if(!build.activeSelf)
+            {
+                Destroy(pendingObj);
             }
             else
             {
                 pendingObj.transform.position = pos;
             }
-           
 
             if (Input.GetMouseButtonDown(0) && canPlace)
             {
@@ -82,8 +84,38 @@ public class BuildingManager : MonoBehaviour
             {
                 RotateObject();
             }
-            
         }   
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (isBuildActive)
+            {
+                isBuildActive = false;
+                build.SetActive(false);
+                _playerController.isBuildModeEnabled = false;
+                grid.SetActive(false);
+            }
+            else
+            {
+                isBuildActive = true;
+                build.SetActive(true);
+                _playerController.isBuildModeEnabled = true;
+                grid.SetActive(true);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isBuildActive)
+            {
+                isBuildActive = false;
+                build.SetActive(false);
+                _playerController.isBuildModeEnabled = false;
+                grid.SetActive(false);
+            }
+            else
+            {
+                //TODO: Pause Menu
+            }
+        }
     }
 
     public void RotateObject()
