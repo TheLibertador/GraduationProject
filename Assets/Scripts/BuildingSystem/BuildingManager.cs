@@ -18,6 +18,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     public float gridSize;
+    [Header("GridOn değeri false olursa gris tamamen kapalı olucak")]
     public bool gridOn = true;
     public bool canPlace = true;
     public int rotateAmount = 90;
@@ -37,9 +38,19 @@ public class BuildingManager : MonoBehaviour
         {
             pos += gridSize;
         }
-
         return pos;
     }
+    /*
+     Örneğin, eğer gridSize değeri 5 olsaydı ve pos değeri 17 olsaydı, pos % gridSize işlemi 2 değerini verir.
+     Bu, pos değerinin 5 adımından sonra kalanını temsil eder ve bu kalan değer, gridSize'ın bir tam katından
+     küçük olduğu sürece, yani gridSize'ın yarısından küçük olduğu sürece, pos değeri önceki tam grid
+     pozisyonuna düşürülür. Eğer pos değeri gridSize'ın yarısından büyükse, o zaman pos değeri sonraki tam grid
+     pozisyonuna yuvarlanır.
+     
+     Eğer gridSize değeri 5 ve pos değeri 17 olsaydı, 
+     pos değerinin gridSize'a bölümünden kalanı hesaplanır: 17 % 5 = 2 bu xDiff değeri, pos'un tam grid pozisyonuna göre ne kadar ileride olduğunu gösterir.
+     xDiff değeri gridSize / 2'den (5 / 2 = 2.5) büyük olduğu için, pos değeri bir sonraki tam grid pozisyonuna (20) yuvarlanır.
+       */
 
 
     private void FixedUpdate()
@@ -70,7 +81,7 @@ public class BuildingManager : MonoBehaviour
             {
                 Destroy(pendingObj);
             }
-            else
+            else if(build.activeSelf)
             {
                 pendingObj.transform.position = pos;
             }
