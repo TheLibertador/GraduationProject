@@ -31,14 +31,14 @@ public class EnemyWaveSystem : MonoBehaviour
         
         if (dayNum == 1)
         {
-            for (int i = 0; i < dayNum * 5f; i++)
+            for (int i = 0; i < dayNum * 7f; i++)
             {
                 m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
                 StartCoroutine(Wait());
             }
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 6; i++)
             {
                 m_EnemyFactory.InstantiateTroll("fastTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
@@ -47,20 +47,20 @@ public class EnemyWaveSystem : MonoBehaviour
         }
         else if (dayNum == 2)
         {
-            for (int i = 0; i < dayNum * 5f; i++)
+            for (int i = 0; i < dayNum * 10f; i++)
             {
                 m_EnemyFactory.InstantiateTroll("smallTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
                 StartCoroutine(Wait());
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 8; i++)
             {
                 m_EnemyFactory.InstantiateTroll("fastTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
                 StartCoroutine(Wait());
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 m_EnemyFactory.InstantiateTroll("heavyTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
@@ -76,13 +76,13 @@ public class EnemyWaveSystem : MonoBehaviour
                 StartCoroutine(Wait());
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 m_EnemyFactory.InstantiateTroll("heavyTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;
                 StartCoroutine(Wait());
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 5; i++)
             {
                 m_EnemyFactory.InstantiateTroll("earlTroll", instantiateZones[GetRandomInstantiateZone()]);
                 GameManager.Instance.numberOfActiveEnemies++;

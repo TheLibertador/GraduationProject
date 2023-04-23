@@ -22,7 +22,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject hudPanel;
     [SerializeField] private GameObject failPanel;
 
-    [Header("Sliders")] [SerializeField] private Slider healthSlider;
+    [Header("Sliders")] 
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Slider xpSlider;
 
     [Header("Canvas's")] 
     [SerializeField] private Canvas mainMenuCanvas;
@@ -33,6 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text woodText;
     [SerializeField] private TMP_Text ironText;
     [SerializeField] private TMP_Text stoneText;
+    
 
     private void Awake()
     {
@@ -132,7 +135,17 @@ public class UIManager : MonoBehaviour
     }
     
     #endregion
-    
-    
-  
+
+
+    public void EarnXp(int point)
+    {
+        xpSlider.value += point;
+    }
+
+    public void ShowLostHealth(int amount)
+    {
+        healthSlider.value -= amount;
+    }
+
+
 }

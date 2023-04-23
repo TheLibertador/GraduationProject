@@ -34,7 +34,6 @@ public class SmallTroll : Troll
 
     private void SetAgentDestination()
     {
-        Debug.Log("My target isssssssssssss ==== " + FindNearestEnemy(smallTrollData.enemyRadius, m_İnitialTarget));
         m_Agent.SetDestination(FindNearestEnemy(smallTrollData.enemyRadius, m_İnitialTarget).position);
     }
 
@@ -47,6 +46,7 @@ public class SmallTroll : Troll
             {
                 m_Animator.SetTrigger("Attack");
                 EventManager.OnOnPlayerTakeDamage(m_Damage);
+                UIManager.Instance.ShowLostHealth(m_Damage);
             }
                
         }

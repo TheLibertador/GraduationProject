@@ -63,14 +63,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226088123}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 53447666}
-  m_Father: {fileID: 7365765276118329800}
-  m_RootOrder: 3
+  m_Father: {fileID: 7365765277174034914}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -477,15 +477,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522788041}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1012542421}
   - {fileID: 1536933358}
-  m_Father: {fileID: 7365765276118329800}
-  m_RootOrder: 2
+  m_Father: {fileID: 7365765277174034914}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4836,8 +4836,6 @@ RectTransform:
   m_Children:
   - {fileID: 7365765275560974790}
   - {fileID: 7365765277174034914}
-  - {fileID: 522788042}
-  - {fileID: 226088124}
   m_Father: {fileID: 1654333276637100847}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5043,6 +5041,7 @@ MonoBehaviour:
   hudPanel: {fileID: 7365765277174034915}
   failPanel: {fileID: 7365765275560974791}
   healthSlider: {fileID: 0}
+  xpSlider: {fileID: 0}
   mainMenuCanvas: {fileID: 7365765276191131096}
   goldText: {fileID: 7365765275426401438}
   woodText: {fileID: 4668206184686941001}
@@ -6340,6 +6339,8 @@ RectTransform:
   - {fileID: 5948141461332799406}
   - {fileID: 677011863912155020}
   - {fileID: 2171768959067561544}
+  - {fileID: 522788042}
+  - {fileID: 226088124}
   m_Father: {fileID: 7365765276118329800}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

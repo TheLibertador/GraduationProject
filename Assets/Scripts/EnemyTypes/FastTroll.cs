@@ -49,6 +49,7 @@ public class FastTroll : Troll
             {
                 m_Animator.SetTrigger("Attack");
                 EventManager.OnOnPlayerTakeDamage(m_Damage);
+                UIManager.Instance.ShowLostHealth(m_Damage);
             }
                
         }

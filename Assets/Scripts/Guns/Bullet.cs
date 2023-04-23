@@ -47,6 +47,8 @@ namespace Guns
                     {
                         Destroy(enemyFastTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
+                        UIManager.Instance.EarnXp(2);
+                        ResourceManager.Instance.AddResource("gold",10);
                     }
                     Destroy(gameObject);
                 }
@@ -57,6 +59,8 @@ namespace Guns
                     {
                         Destroy(enemyEarlTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
+                        UIManager.Instance.EarnXp(5);
+                        ResourceManager.Instance.AddResource("gold",30);
                     }
                     Destroy(gameObject);
                 }
@@ -67,6 +71,8 @@ namespace Guns
                     {
                         Destroy(enemyHeavyTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
+                        UIManager.Instance.EarnXp(5);
+                        ResourceManager.Instance.AddResource("gold",20);
                     }
                     Destroy(gameObject);
                 }
@@ -77,6 +83,8 @@ namespace Guns
                     {
                         Destroy(enemyKingTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
+                        UIManager.Instance.EarnXp(10);
+                        ResourceManager.Instance.AddResource("gold",50);
                     }
                     Destroy(gameObject);
                 }
@@ -87,6 +95,8 @@ namespace Guns
                     {
                         Destroy(enemySmallTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
+                        UIManager.Instance.EarnXp(1);
+                        ResourceManager.Instance.AddResource("gold",5);
                     }
                     Destroy(gameObject);
                 }

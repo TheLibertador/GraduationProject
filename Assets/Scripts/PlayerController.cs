@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.playerState = GameManager.PlayerStates.dead;
             GameManager.Instance.gameState = GameManager.GameStates.fail;
             var b = m_Rigidbody.constraints == RigidbodyConstraints.FreezeAll;
+            UIManager.Instance.ActivateFailPanel();
         }
     }
 
