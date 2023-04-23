@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
     private void FixedUpdate()
     {
         DisplayResourceAmounts();
+        CheckContinueButtonActivity();
         
     }
 
