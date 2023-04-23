@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeName: Fast
   enemyHealth: 12
-  enemySpeed: 14
+  enemySpeed: 7
   enemyDamage: 2
   enemyRadius: 10

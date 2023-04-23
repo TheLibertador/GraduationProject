@@ -16,7 +16,7 @@ public class FastTroll : Troll
     private void Awake()
     {
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
-        m_İnitialTarget = GameObject.FindWithTag("Target").transform;
+        m_İnitialTarget = GameObject.FindWithTag("Player").transform;
         m_Agent.speed = fastTrollData.enemySpeed;
         m_Health = fastTrollData.enemyHealth;
         m_Damage = (int) fastTrollData.enemyDamage;
@@ -28,12 +28,17 @@ public class FastTroll : Troll
     {
         FindNearestEnemy(fastTrollData.enemyRadius, m_İnitialTarget);
         SetAgentDestination();
-        InvokeRepeating(nameof(SetAgentDestination),0.1f,0.2f);
+        //InvokeRepeating(nameof(SetAgentDestination),0.1f,0.2f);
+    }
+
+    private void FixedUpdate()
+    {
+        SetAgentDestination();
     }
 
     private void SetAgentDestination()
     {
-        m_Agent.SetDestination();
+        m_Agent.SetDestination(m_İnitialTarget.position);
     }
     
     private void OnCollisionStay(Collision other)
