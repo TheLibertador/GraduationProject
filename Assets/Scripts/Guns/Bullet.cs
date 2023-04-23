@@ -46,6 +46,7 @@ namespace Guns
                     if (enemyFastTroll.m_Health <= 0)
                     {
                         Destroy(enemyFastTroll.gameObject);
+                        GameManager.Instance.numberOfActiveEnemies--;
                     }
                     Destroy(gameObject);
                 }
@@ -55,6 +56,7 @@ namespace Guns
                     if (enemyEarlTroll.m_Health <= 0)
                     {
                         Destroy(enemyEarlTroll.gameObject);
+                        GameManager.Instance.numberOfActiveEnemies--;
                     }
                     Destroy(gameObject);
                 }
@@ -64,6 +66,7 @@ namespace Guns
                     if (enemyHeavyTroll.m_Health <= 0)
                     {
                         Destroy(enemyHeavyTroll.gameObject);
+                        GameManager.Instance.numberOfActiveEnemies--;
                     }
                     Destroy(gameObject);
                 }
@@ -73,6 +76,7 @@ namespace Guns
                     if (enemyKingTroll.m_Health <= 0)
                     {
                         Destroy(enemyKingTroll.gameObject);
+                        GameManager.Instance.numberOfActiveEnemies--;
                     }
                     Destroy(gameObject);
                 }
@@ -82,6 +86,7 @@ namespace Guns
                     if (enemySmallTroll.m_Health <= 0)
                     {
                         Destroy(enemySmallTroll.gameObject);
+                        GameManager.Instance.numberOfActiveEnemies--;
                     }
                     Destroy(gameObject);
                 }

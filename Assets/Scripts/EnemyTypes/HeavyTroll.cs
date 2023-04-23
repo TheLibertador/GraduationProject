@@ -25,7 +25,7 @@ public class HeavyTroll : Troll
     {
         FindNearestEnemy(heavyTrollData.enemyRadius, m_İnitialTarget);
         SetAgentDestination();
-        InvokeRepeating(nameof(SetAgentDestination),2f,1f);
+        InvokeRepeating(nameof(SetAgentDestination),0.1f,0.2f);
     }
 
     private void SetAgentDestination()

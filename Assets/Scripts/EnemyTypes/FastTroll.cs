@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,18 +21,19 @@ public class FastTroll : Troll
         m_Health = fastTrollData.enemyHealth;
         m_Damage = (int) fastTrollData.enemyDamage;
         m_Animator = GetComponentInChildren<Animator>();
+        
     }
 
     void Start()
     {
         FindNearestEnemy(fastTrollData.enemyRadius, m_İnitialTarget);
         SetAgentDestination();
-        InvokeRepeating(nameof(SetAgentDestination),2f,1f);
+        InvokeRepeating(nameof(SetAgentDestination),0.1f,0.2f);
     }
 
     private void SetAgentDestination()
     {
-        m_Agent.SetDestination(FindNearestEnemy(fastTrollData.enemyRadius, m_İnitialTarget).position);
+        m_Agent.SetDestination();
     }
     
     private void OnCollisionStay(Collision other)
