@@ -79,12 +79,18 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool GetGameData()
     {
+        m_GameData = dataHandler.Load();
         if(m_GameData == null)
         {
+            Debug.Log(m_GameData.totalPlayTime);
             return false;
         }
-        
-        return true;
+        else
+        {
+            Debug.Log(m_GameData.totalPlayTime);
+            return true;
+           
+        }
         
     }
 }

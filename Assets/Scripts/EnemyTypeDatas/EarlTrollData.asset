@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeName: Earl
   enemyHealth: 50
-  enemySpeed: 8
+  enemySpeed: 4
   enemyDamage: 10
   enemyRadius: 10
