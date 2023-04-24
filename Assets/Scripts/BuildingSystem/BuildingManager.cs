@@ -27,8 +27,8 @@ public class BuildingManager : MonoBehaviour
     private bool isBuildActive = false;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject grid;
+    private int selectedObj;
 
-    
 
     float RoundToNearestGrid(float pos)
     {
@@ -69,6 +69,7 @@ public class BuildingManager : MonoBehaviour
         if (pendingObj!= null)
         {
             Destroy(pendingObj);
+            selectedObj = index;
         }
         pendingObj = Instantiate(objects[index], pos, transform.rotation);
     }
@@ -140,6 +141,10 @@ public class BuildingManager : MonoBehaviour
     }
     void PlaceObject()
     {
+        if (selectedObj != 4 || selectedObj != 3) // eğer duvar değilse
+        {
+            pendingObj.AddComponent<Autoturret>();
+        }
         pendingObj.GetComponent<MeshCollider>().isTrigger = false;
         var rb =pendingObj.AddComponent<Rigidbody>();
         rb.useGravity = false;

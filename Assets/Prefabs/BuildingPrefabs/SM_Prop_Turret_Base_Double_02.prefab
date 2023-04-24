@@ -241,9 +241,8 @@ GameObject:
   - component: {fileID: 4806244831832490}
   - component: {fileID: 33236824786401876}
   - component: {fileID: 23490319114959810}
-  - component: {fileID: 1578388884}
-  - component: {fileID: 1578388883}
-  - component: {fileID: 1578388882}
+  - component: {fileID: 7108724247523374492}
+  - component: {fileID: 7171960139407975893}
   m_Layer: 0
   m_Name: SM_Prop_Turret_Base_Double_02
   m_TagString: Untagged
@@ -319,24 +318,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &1578388884
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252988071655404}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!65 &1578388883
-BoxCollider:
+--- !u!64 &7108724247523374492
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -345,10 +328,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5906479, y: 1.5968106, z: 1.5906464}
-  m_Center: {x: 0.00000074505806, y: 0.38148466, z: 0}
---- !u!114 &1578388882
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 406a1be4a69588444a727ccb58cf44ba, type: 3}
+--- !u!114 &7171960139407975893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,16 +341,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252988071655404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf9f7fbd8c5208848966e0597b11f1f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 38cd367b554faf14189ef1574be658da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1636156593860943179, guid: 8afdb6b811d41d244860af548342f965, type: 3}
-  shootRange: 10
-  rotationSpeed: 10
-  shootInterval: 0.1
-  bulletSpawnPoint: {fileID: 1657706903}
-  bulletSpawnPoint2: {fileID: 534469729}
-  MuzzleFlashParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!1 &1477199638599778
 GameObject:
   m_ObjectHideFlags: 0
