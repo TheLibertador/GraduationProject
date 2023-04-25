@@ -92,6 +92,8 @@ public class BuildingManager : MonoBehaviour
                 pendingObj.transform.position = pos;
             }
 
+            Debug.Log(Input.GetMouseButtonDown(0).ToString()+ canPlace.ToString()+build.activeSelf.ToString()+ EventSystem.current.IsPointerOverGameObject().ToString());
+
             if (Input.GetMouseButtonDown(0) && canPlace && build.activeSelf && !EventSystem.current.IsPointerOverGameObject())
             {
                 PlaceObject();

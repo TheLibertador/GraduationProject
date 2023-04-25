@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3465469884065434456}
   m_Layer: 0
   m_Name: SM_Prop_Turret_Base_Single_01
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
