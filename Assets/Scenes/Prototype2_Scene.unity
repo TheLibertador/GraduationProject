@@ -16499,7 +16499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1323252687
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16572,7 +16572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323252686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0001, z: 0}
+  m_LocalPosition: {x: 14.4, y: 0.0001, z: -25.5}
   m_LocalScale: {x: 12.95289, y: 12.95289, z: 12.95289}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26714,6 +26714,22 @@ PrefabInstance:
     - target: {fileID: 1074700031841701710, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: nightAmbientLight.b
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: nightAmbientLight.g
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: nightAmbientLight.r
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: maxSunLightIntensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
