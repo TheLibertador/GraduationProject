@@ -11,6 +11,8 @@ public class EarlTroll : Troll
     public float m_Health;
     private int m_Damage;
     private Animator m_Animator;
+    
+    private bool isDamageCoroutineActive = false;
 
     private void Awake()
     {
@@ -41,8 +43,11 @@ public class EarlTroll : Troll
             if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 m_Animator.SetTrigger("Attack");
-                EventManager.OnOnPlayerTakeDamage(m_Damage);
-                UIManager.Instance.ShowLostHealth(m_Damage);
+                if (!isDamageCoroutineActive)
+                {
+                    isDamageCoroutineActive = true;
+                    StartCoroutine(WaitForAttackEnemy(1f, m_Damage));
+                }
             }
                
         }
@@ -51,10 +56,27 @@ public class EarlTroll : Troll
             if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 m_Animator.SetTrigger("Attack");
-                EventManager.OnOnTargetTakeDamage(m_Damage);
+                if(!isDamageCoroutineActive)
+                {
+                    isDamageCoroutineActive = true;
+                    StartCoroutine(WaitForAttackTarget(1f, m_Damage));
+                }
             }
                 
         }
-        
+    }
+    
+    protected IEnumerator WaitForAttackEnemy(float waitTime, int damage)
+    {
+        EventManager.OnOnPlayerTakeDamage(damage);
+        UIManager.Instance.ShowLostHealth(damage);
+        yield return new WaitForSeconds(waitTime);
+        isDamageCoroutineActive = false;
+    }
+    protected IEnumerator WaitForAttackTarget(float waitTime, int damage)
+    {
+        EventManager.OnOnPlayerTakeDamage(damage);
+        yield return new WaitForSeconds(waitTime);
+        isDamageCoroutineActive = false;
     }
 }

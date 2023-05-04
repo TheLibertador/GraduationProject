@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeName: Small
   enemyHealth: 10
-  enemySpeed: 4
+  enemySpeed: 3
   enemyDamage: 1
   enemyRadius: 10

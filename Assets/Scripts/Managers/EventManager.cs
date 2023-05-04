@@ -16,6 +16,7 @@ public class EventManager : MonoBehaviour
     public static void OnOnPlayerTakeDamage(int damage)
     {
         OnPlayerTakeDamageEvent?.Invoke(damage);
+        Debug.Log("I give damage!!!");
     }
 
 

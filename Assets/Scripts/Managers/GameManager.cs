@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
        if (gameState == GameStates.fail || playerState == PlayerStates.dead)
        {
            EventManager.OnOnGameFailed();
-           Debug.Log("I ghave failed");
        }
    }
 }
