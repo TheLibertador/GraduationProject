@@ -9155,7 +9155,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   gridSize: 0.2
-  gridOn: 1
+  gridOn: 0
   canPlace: 1
   rotateAmount: 90
   build: {fileID: 1720926587}
