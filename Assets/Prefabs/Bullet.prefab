@@ -117,8 +117,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   destroyDistance: 50
-  damage: 5
+  minDamage: 1
+  maxDamage: 10
   deathParticleEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
+  textPrefab: {fileID: 8148404199475597805, guid: 8f559a0afff3a3941be6825e3f5f29c1, type: 3}
 --- !u!96 &-4704513402450025115
 TrailRenderer:
   serializedVersion: 2
