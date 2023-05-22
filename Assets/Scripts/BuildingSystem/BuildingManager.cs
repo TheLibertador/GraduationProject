@@ -66,11 +66,8 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        if (pendingObj!= null)
-        {
-            Destroy(pendingObj);
-            selectedObj = index;
-        }
+        Destroy(pendingObj);
+        selectedObj = index;
         pendingObj = Instantiate(objects[index], pos, transform.rotation);
     }
     
@@ -91,9 +88,6 @@ public class BuildingManager : MonoBehaviour
             {
                 pendingObj.transform.position = pos;
             }
-
-            Debug.Log(Input.GetMouseButtonDown(0).ToString()+ canPlace.ToString()+build.activeSelf.ToString()+ EventSystem.current.IsPointerOverGameObject().ToString());
-
             if (Input.GetMouseButtonDown(0) && canPlace && build.activeSelf && !EventSystem.current.IsPointerOverGameObject())
             {
                 PlaceObject();
@@ -143,9 +137,11 @@ public class BuildingManager : MonoBehaviour
     }
     void PlaceObject()
     {
-        if (selectedObj != 4 || selectedObj != 3) // eğer duvar değilse
+        Debug.Log(selectedObj);
+        if (selectedObj != 4 && selectedObj != 3) // eğer duvar değilse
         {
             pendingObj.AddComponent<Autoturret>();
+            Debug.Log("autoturret added");
         }
         pendingObj.GetComponent<MeshCollider>().isTrigger = false;
         var rb =pendingObj.AddComponent<Rigidbody>();
@@ -154,5 +150,4 @@ public class BuildingManager : MonoBehaviour
         Destroy(pendingObj.GetComponent<CheckPlacement>());
         pendingObj = null;
     }
-    
 }

@@ -8,13 +8,15 @@ public class CheckPlacement : MonoBehaviour
     private BuildingManager _buildingManager;
     private Material _wrongMaterial;
     private Material _defaultMaterial;
-    void Start()
+
+    private void Start()
     {
         _buildingManager = GameObject.Find("BuildingManager").GetComponent<BuildingManager>();
         _wrongMaterial = new Material(Shader.Find("Standard"));
         _wrongMaterial.color = Color.red;
+        _defaultMaterial = GetComponent<MeshRenderer>().material;
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         _buildingManager.canPlace = true;
@@ -29,20 +31,20 @@ public class CheckPlacement : MonoBehaviour
         UpdateMaterials();
     }
 
-    // Update is called once per frame
-    void Awake()
-    {
-        _defaultMaterial = gameObject.GetComponent<MeshRenderer>().material;
-    }
     private void UpdateMaterials()
     {
-        if (_buildingManager.canPlace)
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer meshRenderer in meshRenderers)
         {
-            gameObject.GetComponent<MeshRenderer>().material = _defaultMaterial;
-        }
-        else
-        {
-            gameObject.GetComponent<MeshRenderer>().material = _wrongMaterial;
+            if (_buildingManager.canPlace)
+            {
+                meshRenderer.material = _defaultMaterial;
+            }
+            else
+            {
+                meshRenderer.material = _wrongMaterial;
+            }
         }
     }
 }

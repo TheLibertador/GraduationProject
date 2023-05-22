@@ -9147,14 +9147,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 1079316786754286, guid: d61d59b102c18fa4482acbb105b6a94b, type: 3}
+  - {fileID: 1401522201435234, guid: 5a5c1ae74ed6fa34eb03ca7e65badaf7, type: 3}
   - {fileID: 1252988071655404, guid: df19e001bcac16546bf83c5048228057, type: 3}
-  - {fileID: 1588794813270412, guid: d2cc8c9f2cb6aa84fadce33914d154c7, type: 3}
   - {fileID: 1673802433020318, guid: dc0d70452a3c7334ca5526b11226c151, type: 3}
   - {fileID: 1009802335443730, guid: 09e39d321068a6b4096271c8369d3c36, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  gridSize: 1
+  gridSize: 0.2
   gridOn: 1
   canPlace: 1
   rotateAmount: 90
