@@ -7000,9 +7000,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     sentences:
-    - wfkpwfkopw powfpowekfop ekfopwefkowkop
-    - fewfporgkeopko qpekfeopkwpk poekfpokfpeokfowe jweopgwporkgprow eopkfewk
-    - pwgkropkpohek ekfopfkopwfkw pgkwopgk poekfowgkp qepof
+    - What is this place! I should be stationed at Planet XC23.
+    - This place is nothing like XC23. It looks like a savage planet.
+    - I have to survive and repair my Ship!
 --- !u!1 &654472162
 GameObject:
   m_ObjectHideFlags: 0
