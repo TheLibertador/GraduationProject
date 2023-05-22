@@ -52,7 +52,7 @@ namespace Guns
                     enemyFastTroll.m_Health -= damage;
                     GameObject textObject = Instantiate(textPrefab, new Vector3(other.transform.position.x, 0.1f, other.transform.position.z), Quaternion.identity);
                     TextMeshPro textMeshPro = textObject.GetComponent<TextMeshPro>();
-                    textMeshPro.text = damage.ToString();
+                    textMeshPro.text = "-" + damage.ToString();
                     if (enemyFastTroll.m_Health <= 0)
                     {
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
@@ -69,7 +69,7 @@ namespace Guns
                     enemyEarlTroll.m_Health -= damage;
                     GameObject textObject = Instantiate(textPrefab, new Vector3(other.transform.position.x, 0.1f, other.transform.position.z), Quaternion.identity);
                     TextMeshPro textMeshPro = textObject.GetComponent<TextMeshPro>();
-                    textMeshPro.text = damage.ToString();
+                    textMeshPro.text = "-" + damage.ToString();
                     if (enemyEarlTroll.m_Health <= 0)
                     {
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
@@ -86,7 +86,7 @@ namespace Guns
                     enemyHeavyTroll.m_Health -= damage;
                     GameObject textObject = Instantiate(textPrefab, new Vector3(other.transform.position.x, 0.1f, other.transform.position.z), Quaternion.identity);
                     TextMeshPro textMeshPro = textObject.GetComponent<TextMeshPro>();
-                    textMeshPro.text = damage.ToString();
+                    textMeshPro.text = "-" + damage.ToString();
                     if (enemyHeavyTroll.m_Health <= 0)
                     {
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
@@ -103,7 +103,7 @@ namespace Guns
                     enemyKingTroll.m_Health -= damage;
                     GameObject textObject = Instantiate(textPrefab, new Vector3(other.transform.position.x, 0.1f, other.transform.position.z), Quaternion.identity);
                     TextMeshPro textMeshPro = textObject.GetComponent<TextMeshPro>();
-                    textMeshPro.text = damage.ToString();
+                    textMeshPro.text = "-" + damage.ToString();
                     if (enemyKingTroll.m_Health <= 0)
                     {
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
@@ -120,7 +120,7 @@ namespace Guns
                     enemySmallTroll.m_Health -= damage;
                     GameObject textObject = Instantiate(textPrefab, new Vector3(other.transform.position.x, 0.1f, other.transform.position.z), Quaternion.identity);
                     TextMeshPro textMeshPro = textObject.GetComponent<TextMeshPro>();
-                    textMeshPro.text = damage.ToString();
+                    textMeshPro.text = "-" + damage.ToString();
                     if (enemySmallTroll.m_Health <= 0)
                     {
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
