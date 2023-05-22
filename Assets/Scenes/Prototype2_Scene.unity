@@ -9162,6 +9162,7 @@ MonoBehaviour:
   build: {fileID: 1720926587}
   _playerController: {fileID: 4019393337586364933}
   grid: {fileID: 1323252686}
+  warningTextPrefab: {fileID: 6573784540563143653, guid: 19cc707bf70276d4eb0f219106f487a1, type: 3}
 --- !u!1001 &349909398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28561,7 +28562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1000 GOLD
+  m_text: '100 GOLD
 
 '
   m_isRightToLeft: 0
@@ -43254,7 +43255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1720926588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49674,7 +49675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2008515464
 RectTransform:
   m_ObjectHideFlags: 0

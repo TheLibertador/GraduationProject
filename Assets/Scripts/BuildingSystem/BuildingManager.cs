@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     public float gridSize;
-    [Header("GridOn değeri false olursa gris tamamen kapalı olucak")]
+    [Header("GridOn değeri false olursa grid tamamen kapalı olucak")]
     public bool gridOn = true;
     public bool canPlace = true;
     public int rotateAmount = 90;
@@ -28,6 +29,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject grid;
     private int selectedObj;
+    [SerializeField] private GameObject warningTextPrefab;
 
 
     float RoundToNearestGrid(float pos)
@@ -66,9 +68,50 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        Destroy(pendingObj);
-        selectedObj = index;
-        pendingObj = Instantiate(objects[index], pos, transform.rotation);
+        if (index == 0 && ResourceManager.Instance.GetResourceValue("gold")> 250)
+        {
+            ResourceManager.Instance.SpendResource("gold", 250);
+            Destroy(pendingObj);
+            selectedObj = index;
+            pendingObj = Instantiate(objects[index], pos, transform.rotation);
+        }
+        else if (index == 1 && ResourceManager.Instance.GetResourceValue("gold") > 500)
+        {
+            ResourceManager.Instance.SpendResource("gold", 500);
+            Destroy(pendingObj);
+            selectedObj = index;
+            pendingObj = Instantiate(objects[index], pos, transform.rotation);
+        }
+        else if(index == 2 && ResourceManager.Instance.GetResourceValue("gold") > 1000)
+        {
+            ResourceManager.Instance.SpendResource("gold", 1000);
+            Destroy(pendingObj);
+            selectedObj = index;
+            pendingObj = Instantiate(objects[index], pos, transform.rotation);
+        }
+        else if (index == 3 && ResourceManager.Instance.GetResourceValue("gold") > 100)
+        {
+            ResourceManager.Instance.SpendResource("gold", 100);
+            Destroy(pendingObj);
+            selectedObj = index;
+            pendingObj = Instantiate(objects[index], pos, transform.rotation);
+        }
+        else if (index == 4 && ResourceManager.Instance.GetResourceValue("gold") > 300)
+        {
+            ResourceManager.Instance.SpendResource("gold", 300);
+            Destroy(pendingObj);
+            selectedObj = index;
+            pendingObj = Instantiate(objects[index], pos, transform.rotation);
+        }
+        else
+        {
+            var textObject = Instantiate(warningTextPrefab, Vector3.zero, Quaternion.identity);
+            textObject.GetComponent<TextMeshPro>().fontSize = 36;
+            textObject.GetComponent<TextMeshPro>().text = "Not enough gold!";
+            textObject.transform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+        }
+        
+        
     }
     
     void Update()
