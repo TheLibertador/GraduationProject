@@ -6877,6 +6877,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentenceUI: {fileID: 412928396}
+  dialoguePanel: {fileID: 2008515463}
+  buildButton: {fileID: 901366707}
+  m_PlayerController: {fileID: 4019393337586364933}
 --- !u!4 &626856789
 Transform:
   m_ObjectHideFlags: 0
