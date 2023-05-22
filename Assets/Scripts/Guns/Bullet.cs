@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Guns
@@ -8,6 +9,7 @@ namespace Guns
         [SerializeField] private float moveSpeed = 20f;
         [SerializeField] private float destroyDistance = 50f;
         [SerializeField] private float damage = 5f;
+        [SerializeField] private GameObject deathParticleEffect;
         
         private Vector3 _forwardDirection;
         private Vector3 startingPosition;
@@ -45,6 +47,8 @@ namespace Guns
                     enemyFastTroll.m_Health -= damage;
                     if (enemyFastTroll.m_Health <= 0)
                     {
+                        var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
+                        StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyFastTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(2);
@@ -57,6 +61,8 @@ namespace Guns
                     enemyEarlTroll.m_Health -= damage;
                     if (enemyEarlTroll.m_Health <= 0)
                     {
+                        var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
+                        StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyEarlTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(5);
@@ -69,6 +75,8 @@ namespace Guns
                     enemyHeavyTroll.m_Health -= damage;
                     if (enemyHeavyTroll.m_Health <= 0)
                     {
+                        var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
+                        StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyHeavyTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(5);
@@ -81,6 +89,8 @@ namespace Guns
                     enemyKingTroll.m_Health -= damage;
                     if (enemyKingTroll.m_Health <= 0)
                     {
+                        var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
+                        StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyKingTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(10);
@@ -93,6 +103,8 @@ namespace Guns
                     enemySmallTroll.m_Health -= damage;
                     if (enemySmallTroll.m_Health <= 0)
                     {
+                        var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
+                        StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemySmallTroll.gameObject);
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(1);
@@ -107,5 +119,11 @@ namespace Guns
             }
         }
 
+        private IEnumerator DestroyPartilceEffect(GameObject particleEffect)
+        {
+            yield return new WaitForSeconds(1f);
+            Destroy(particleEffect);
+        }
     }
+    
 }

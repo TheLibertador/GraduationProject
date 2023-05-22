@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   destroyDistance: 50
+  damage: 5
+  deathParticleEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
 --- !u!96 &-4704513402450025115
 TrailRenderer:
   serializedVersion: 2

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,20 +23,24 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
         
     }
+
+    private void Start()
+    {
+        m_PlayerController.isBuildModeEnabled = true;
+        buildButton.SetActive(false);
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         //m_Sentences.Clear();
-        m_PlayerController.isBuildModeEnabled = true;
-        buildButton.SetActive(false);
         foreach (var sentence in dialogue.sentences)
         {
             m_Sentences.Enqueue(sentence);
         }
-        
+        Debug.Log(m_Sentences.Count);
         DisplayNextSentence();
         
     }
@@ -50,12 +55,12 @@ public class DialogueManager : MonoBehaviour
 
         string sentence = m_Sentences.Dequeue();
         sentenceUI.text = sentence;
-        Debug.Log(sentence);
     }
 
     void EndDialogue()
     {
-        dialoguePanel.SetActive(false);
+        Debug.Log("Dialogue Ended");
+        Destroy(dialoguePanel.gameObject);
         m_PlayerController.isBuildModeEnabled = false;
         buildButton.SetActive(true);
     }
