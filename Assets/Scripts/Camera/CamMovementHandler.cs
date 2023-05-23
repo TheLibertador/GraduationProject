@@ -7,6 +7,7 @@ public class CamMovementHandler : MonoBehaviour
 {
    [SerializeField] private Vector3 camOffset;
    [SerializeField] private float camLerpSpeed = 0.125f;
+   [SerializeField] private float scrollFactor = 1.1f;
    
    private Transform m_TargetTransform;
    private Vector3 m_DesiredCamPosition;
@@ -34,5 +35,18 @@ public class CamMovementHandler : MonoBehaviour
    private void LookAtPlayer()
    {
       transform.LookAt(m_TargetTransform);
+   }
+   
+   
+
+   void Update()
+   {
+      float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
+
+      if (scrollDelta != 0f)
+      {
+         camOffset.y *= Mathf.Pow(scrollFactor, scrollDelta);
+         camOffset.z *= Mathf.Pow(scrollFactor, scrollDelta);
+      }
    }
 }
