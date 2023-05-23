@@ -68,23 +68,23 @@ public class BuildingManager : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        if (index == 0 && ResourceManager.Instance.GetResourceValue("gold")> 0)
+        if (index == 0 && ResourceManager.Instance.GetResourceValue("gold")> 250)
         {
-            ResourceManager.Instance.SpendResource("gold", 0);
+            ResourceManager.Instance.SpendResource("gold", 250);
             Destroy(pendingObj);
             selectedObj = index;
             pendingObj = Instantiate(objects[index], pos, transform.rotation);
         }
-        else if (index == 1 && ResourceManager.Instance.GetResourceValue("gold") > 0)
+        else if (index == 1 && ResourceManager.Instance.GetResourceValue("gold") > 500)
         {
-            ResourceManager.Instance.SpendResource("gold", 0);
+            ResourceManager.Instance.SpendResource("gold", 500);
             Destroy(pendingObj);
             selectedObj = index;
             pendingObj = Instantiate(objects[index], pos, transform.rotation);
         }
-        else if(index == 2 && ResourceManager.Instance.GetResourceValue("gold") > 0)
+        else if(index == 2 && ResourceManager.Instance.GetResourceValue("gold") > 1000)
         {
-            ResourceManager.Instance.SpendResource("gold", 0);
+            ResourceManager.Instance.SpendResource("gold", 1000);
             Destroy(pendingObj);
             selectedObj = index;
             pendingObj = Instantiate(objects[index], pos, transform.rotation);
