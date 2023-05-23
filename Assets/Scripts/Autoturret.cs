@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,32 @@ public class Autoturret : MonoBehaviour
     private GameObject currentTarget; 
 
     private float lastShotTime = 0f;
+
+    void Start()
+    {
+        bulletPrefab = Resources.Load<GameObject>("Bullet");
+        Transform[] spawnPoints = GetComponentsInChildren<Transform>(true);
+
+        int spawnPointCount = 0;
+
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            if (spawnPoint.name.Equals("SpawnPoint"))
+            {
+                spawnPointCount++;
+
+                if (spawnPointCount == 1)
+                {
+                    bulletSpawnPoint = spawnPoint;
+                }
+                else if (spawnPointCount == 2)
+                {
+                    bulletSpawnPoint2 = spawnPoint;
+                }
+            }
+        }
+    }
+
 
     void Update()
     {
@@ -45,21 +72,15 @@ public class Autoturret : MonoBehaviour
             // Check if the current target is within shoot range and enough time has passed since the last shot
             if (closestDistance < shootRange && Time.time > lastShotTime + shootInterval)
             {
-                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.Euler(90,0,0));
+                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+                bullet.transform.Rotate(90, 0, 0); // Adjust the bullet's local rotation to face forward
                 Instantiate(MuzzleFlashParticle, bulletSpawnPoint.position, Quaternion.identity, gameObject.transform);
-                
-                var bulletRotation = bullet.transform.rotation;
-                bulletRotation.eulerAngles = new Vector3(bulletRotation.eulerAngles.x, gameObject.transform.rotation.eulerAngles.y, bulletRotation.eulerAngles.z);
-                bullet.transform.rotation = bulletRotation;
-                
-                if (bulletSpawnPoint2!=null)
+
+                if (bulletSpawnPoint2 != null)
                 {
-                    var bullet2 = Instantiate(bulletPrefab, bulletSpawnPoint2.position, Quaternion.Euler(90,0,0));
+                    var bullet2 = Instantiate(bulletPrefab, bulletSpawnPoint2.position, transform.rotation);
+                    bullet2.transform.Rotate(90, 0, 0); // Adjust the bullet's local rotation to face forward
                     Instantiate(MuzzleFlashParticle, bulletSpawnPoint2.position, Quaternion.identity, gameObject.transform);
-                    
-                    var bulletRotation2 = bullet.transform.rotation;
-                    bulletRotation2.eulerAngles = new Vector3(bulletRotation2.eulerAngles.x, gameObject.transform.rotation.eulerAngles.y, bulletRotation2.eulerAngles.z);
-                    bullet2.transform.rotation = bulletRotation2;
                 }
                 lastShotTime = Time.time;
             }
