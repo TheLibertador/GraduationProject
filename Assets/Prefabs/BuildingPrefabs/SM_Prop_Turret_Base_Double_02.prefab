@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 23490319114959810}
   - component: {fileID: 7108724247523374492}
   - component: {fileID: 7171960139407975893}
+  - component: {fileID: -420579248837200167}
   m_Layer: 0
   m_Name: SM_Prop_Turret_Base_Double_02
   m_TagString: Building
@@ -282,6 +283,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cd367b554faf14189ef1574be658da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-420579248837200167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252988071655404}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9f7fbd8c5208848966e0597b11f1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1636156593860943179, guid: 8afdb6b811d41d244860af548342f965, type: 3}
+  shootRange: 5
+  rotationSpeed: 10
+  shootInterval: 0.25
+  bulletSpawnPoint: {fileID: 7081898578374808013}
+  bulletSpawnPoint2: {fileID: 3632587514994680287}
+  MuzzleFlashParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!1 &1477199638599778
 GameObject:
   m_ObjectHideFlags: 0

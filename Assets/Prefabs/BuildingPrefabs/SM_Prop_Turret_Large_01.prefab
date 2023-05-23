@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 23954516998034766}
   - component: {fileID: -5848247982606553220}
   - component: {fileID: -3793532088183434890}
+  - component: {fileID: -7323760600564813392}
   m_Layer: 0
   m_Name: SM_Prop_Turret_Large_01
   m_TagString: Building
@@ -197,6 +198,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 88e445e921f0f9e4098ac72a8bdd3eaf, type: 3}
+--- !u!114 &-7323760600564813392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401522201435234}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9f7fbd8c5208848966e0597b11f1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1636156593860943179, guid: 8afdb6b811d41d244860af548342f965, type: 3}
+  shootRange: 20
+  rotationSpeed: 10
+  shootInterval: 1
+  bulletSpawnPoint: {fileID: 366496719723279484}
+  bulletSpawnPoint2: {fileID: 0}
+  MuzzleFlashParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
 --- !u!1 &1476160942960948
 GameObject:
   m_ObjectHideFlags: 0

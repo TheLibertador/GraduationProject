@@ -82,9 +82,9 @@ public class BuildingManager : MonoBehaviour
             selectedObj = index;
             pendingObj = Instantiate(objects[index], pos, transform.rotation);
         }
-        else if(index == 2 && ResourceManager.Instance.GetResourceValue("gold") > 1000)
+        else if(index == 2 && ResourceManager.Instance.GetResourceValue("gold") > 0)
         {
-            ResourceManager.Instance.SpendResource("gold", 1000);
+            ResourceManager.Instance.SpendResource("gold", 0);
             Destroy(pendingObj);
             selectedObj = index;
             pendingObj = Instantiate(objects[index], pos, transform.rotation);
@@ -110,8 +110,6 @@ public class BuildingManager : MonoBehaviour
             textObject.GetComponent<TextMeshPro>().text = "Not enough gold!";
             textObject.transform.position = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         }
-        
-        
     }
     
     void Update()
@@ -183,7 +181,7 @@ public class BuildingManager : MonoBehaviour
         Debug.Log(selectedObj);
         if (selectedObj != 4 && selectedObj != 3) // eğer duvar değilse
         {
-            pendingObj.AddComponent<Autoturret>();
+            pendingObj.GetComponent<Autoturret>().enabled = true;
             Debug.Log("autoturret added");
         }
         pendingObj.GetComponent<MeshCollider>().isTrigger = false;
