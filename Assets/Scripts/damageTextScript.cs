@@ -26,7 +26,7 @@ public class DamageTextScript : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(transform.position - mainCameraTransform.position, Vector3.up);
 
         // Smoothly rotate the GameObject towards the target rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        transform.rotation = targetRotation;
 
         // Calculate the angle difference between the GameObject's forward vector and the main camera's forward vector
         float angleDifference = Vector3.SignedAngle(transform.forward, mainCameraTransform.forward, Vector3.up);
