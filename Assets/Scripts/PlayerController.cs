@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     private AudioSource audioSource2;
     private AudioSource audioSource3;
-
     public void PlayDeathSound()
     {
         if (audioSource3 != null && trollDeathSound != null && !audioSource3.isPlaying)

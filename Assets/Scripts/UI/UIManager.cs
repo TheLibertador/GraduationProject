@@ -33,7 +33,8 @@ public class UIManager : MonoBehaviour
     [Header("ResourceTexts")] 
     [SerializeField] private TMP_Text goldText;
 
-
+    public int PlayerLevel;
+    public TextMeshProUGUI PlayerLevelText;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+        CheckSliderValue();
     }
 
     private void Start()
@@ -134,6 +136,7 @@ public class UIManager : MonoBehaviour
     public void EarnXp(int point)
     {
         xpSlider.value += point;
+        CheckSliderValue();
     }
 
     public void ShowLostHealth(int amount)
@@ -141,5 +144,16 @@ public class UIManager : MonoBehaviour
         healthSlider.value -= amount;
     }
 
+    private void CheckSliderValue()
+    {
+        if (xpSlider.value >= 100)
+        {
+            PlayerLevel++;
+            xpSlider.value = 0;
+        }
+
+        PlayerLevelText.text = "Player Level: " + PlayerLevel;
+
+    }
 
 }

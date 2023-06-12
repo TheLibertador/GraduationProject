@@ -17,6 +17,13 @@ namespace Guns
         
         private Vector3 _forwardDirection;
         private Vector3 startingPosition;
+
+        private void Awake()
+        {
+            minDamage += UIManager.Instance.PlayerLevel;
+            maxDamage += UIManager.Instance.PlayerLevel * 2;
+        }
+
         void Start()
         {
             startingPosition = transform.position; // Save starting position
@@ -60,7 +67,7 @@ namespace Guns
                         Destroy(enemyFastTroll.gameObject);
                         GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
-                        UIManager.Instance.EarnXp(2);
+                        UIManager.Instance.EarnXp(4);
                         ResourceManager.Instance.AddResource("gold",10);
                     }
                     Destroy(gameObject);
@@ -78,7 +85,7 @@ namespace Guns
                         Destroy(enemyEarlTroll.gameObject);
                         GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
-                        UIManager.Instance.EarnXp(5);
+                        UIManager.Instance.EarnXp(10);
                         ResourceManager.Instance.AddResource("gold",30);
                     }
                     Destroy(gameObject);
@@ -96,7 +103,7 @@ namespace Guns
                         Destroy(enemyHeavyTroll.gameObject);
                         GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
-                        UIManager.Instance.EarnXp(5);
+                        UIManager.Instance.EarnXp(10);
                         ResourceManager.Instance.AddResource("gold",20);
                     }
                     Destroy(gameObject);
@@ -114,7 +121,7 @@ namespace Guns
                         Destroy(enemyKingTroll.gameObject);
                         GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
-                        UIManager.Instance.EarnXp(10);
+                        UIManager.Instance.EarnXp(20);
                         ResourceManager.Instance.AddResource("gold",50);
                     }
                     Destroy(gameObject);
@@ -132,7 +139,7 @@ namespace Guns
                         Destroy(enemySmallTroll.gameObject);
                         GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
-                        UIManager.Instance.EarnXp(1);
+                        UIManager.Instance.EarnXp(2);
                         ResourceManager.Instance.AddResource("gold",5);
                     }
                     Destroy(gameObject);
