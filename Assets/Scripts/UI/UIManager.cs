@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Panels")] 
     [SerializeField] private GameObject optionsPanel;
+
+    private bool optionsMenuOpen = false;
     [SerializeField] private GameObject hudPanel;
     [SerializeField] private GameObject failPanel;
 
@@ -59,7 +61,10 @@ public class UIManager : MonoBehaviour
     {
         DisplayResourceAmounts();
         CheckContinueButtonActivity();
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuOpen)
+        {
+            ActivateOptionsPanel();
+        }
     }
 
     public void StartNewGame()
@@ -123,11 +128,13 @@ public class UIManager : MonoBehaviour
     public void ActivateOptionsPanel()
     {
         optionsPanel.SetActive(true);
+        optionsMenuOpen = true;
     }
 
     public void DeActivateOptionsPanel()
     {
         optionsPanel.SetActive(false);
+        optionsMenuOpen = false;
     }
     
     #endregion

@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SoundOptions : MonoBehaviour
 {
     private AudioSource[] m_AudioSources;
+    [SerializeField] private Slider soundSlider;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -15,7 +17,6 @@ public class SoundOptions : MonoBehaviour
     void Start()
     {
         m_AudioSources = Resources.FindObjectsOfTypeAll<AudioSource>();
-        AdjustVolumeOfSounds(m_AudioSources, 0);
     }
 
     // Update is called once per frame
@@ -25,15 +26,14 @@ public class SoundOptions : MonoBehaviour
         {
             m_AudioSources = Resources.FindObjectsOfTypeAll<AudioSource>();
             Debug.Log("Scene has changed" + m_AudioSources);
-            AdjustVolumeOfSounds(m_AudioSources, 0);
         }
     }
 
-    public void AdjustVolumeOfSounds(AudioSource[] m_audioSources, float volume)
+    public void AdjustVolumeOfSounds()
     {
-        foreach (var audioSource in m_audioSources)
+        foreach (var audioSource in m_AudioSources)
         {
-            audioSource.GetComponent<AudioSource>().volume = volume;
+            audioSource.GetComponent<AudioSource>().volume = soundSlider.value;
         }
     }
 
