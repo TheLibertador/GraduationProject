@@ -19,6 +19,14 @@ public class Autoturret : MonoBehaviour
 
     private float lastShotTime = 0f;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSound;
+
+    private void Awake()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
     void Start()
     {
         bulletPrefab = Resources.Load<GameObject>("Bullet");
@@ -73,6 +81,10 @@ public class Autoturret : MonoBehaviour
             if (closestDistance < shootRange && Time.time > lastShotTime + shootInterval)
             {
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
+                if (audioSource != null && shootSound != null)
+                {
+                    audioSource.PlayOneShot(shootSound);
+                }
                 bullet.transform.Rotate(90, 0, 0); // Adjust the bullet's local rotation to face forward
                 Instantiate(MuzzleFlashParticle, bulletSpawnPoint.position, Quaternion.identity, gameObject.transform);
 

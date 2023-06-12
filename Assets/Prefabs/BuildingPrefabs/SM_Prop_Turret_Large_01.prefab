@@ -217,6 +217,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 366496719723279484}
   bulletSpawnPoint2: {fileID: 0}
   MuzzleFlashParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+  shootSound: {fileID: 8300000, guid: eccca94dfc5611d46b49f7667302e2e5, type: 3}
 --- !u!1 &1476160942960948
 GameObject:
   m_ObjectHideFlags: 0

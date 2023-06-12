@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             bullet.transform.rotation = bulletRotation;
             
             //bullet.GetComponent<Rigidbody>().velocity = bulletDirection.normalized * bulletSpeed;
-            if (audioSource != null && shootSound != null)
+            if (audioSource != null && shootSound != null )
             {
                 audioSource.PlayOneShot(shootSound);
             }
