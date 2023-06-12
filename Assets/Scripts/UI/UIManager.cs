@@ -32,10 +32,7 @@ public class UIManager : MonoBehaviour
 
     [Header("ResourceTexts")] 
     [SerializeField] private TMP_Text goldText;
-    [SerializeField] private TMP_Text woodText;
-    [SerializeField] private TMP_Text ironText;
-    [SerializeField] private TMP_Text stoneText;
-    
+
 
     private void Awake()
     {
@@ -91,9 +88,6 @@ public class UIManager : MonoBehaviour
     public void DisplayResourceAmounts()
     {
         goldText.text = ResourceManager.Instance.GetResourceValue("gold").ToString();
-        woodText.text = ResourceManager.Instance.GetResourceValue("wood").ToString();
-        ironText.text = ResourceManager.Instance.GetResourceValue("iron").ToString();
-        stoneText.text = ResourceManager.Instance.GetResourceValue("stone").ToString();
     }
 
     
