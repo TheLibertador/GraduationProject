@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip walkSound;
     [SerializeField] private AudioClip trollDeathSound;
-    private AudioSource audioSource;
-    private AudioSource audioSource2;
-    private AudioSource audioSource3;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource2;
+    [SerializeField] private AudioSource audioSource3;
     public void PlayDeathSound()
     {
         if (audioSource3 != null && trollDeathSound != null && !audioSource3.isPlaying)
@@ -45,10 +45,10 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponentInChildren<Animator>();
         mainCamera = Camera.main;
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource2 = gameObject.AddComponent<AudioSource>();
-        audioSource2.volume = 0.8f;
-        audioSource3 = gameObject.AddComponent<AudioSource>();
+        //audioSource = gameObject.AddComponent<AudioSource>();
+        //audioSource2 = gameObject.AddComponent<AudioSource>();
+        //audioSource2.volume = 0.8f;
+        //audioSource3 = gameObject.AddComponent<AudioSource>();
 
     }
     private void Start()

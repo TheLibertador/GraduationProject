@@ -21,7 +21,7 @@ public class EnemyWaveSystem : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.numberOfActiveEnemies <= 2 && !TimeController.Instance.CheckIfSunIsUp())
+        if (GameManager.Instance.numberOfActiveEnemies <= 5 && !TimeController.Instance.CheckIfSunIsUp())
         {
             InstantiateWave();
         }
