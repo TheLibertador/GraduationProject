@@ -53343,6 +53343,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: startHour
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: sunsetHour
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: sunriseHour
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
+      propertyPath: timeMultiplier
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074700031841701711, guid: 999befa6fbee6644698a963ef5981f54, type: 3}
       propertyPath: nightAmbientLight.b
       value: 0.4433962
       objectReference: {fileID: 0}
