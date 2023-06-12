@@ -26,11 +26,30 @@ public class PlayerController : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Animator m_Animator;
     
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip trollDeathSound;
+    private AudioSource audioSource;
+    private AudioSource audioSource2;
+    private AudioSource audioSource3;
+
+    public void PlayDeathSound()
+    {
+        if (audioSource3 != null && trollDeathSound != null && !audioSource3.isPlaying)
+        {
+            audioSource3.PlayOneShot(trollDeathSound);
+        }
+    }
+    
     private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponentInChildren<Animator>();
         mainCamera = Camera.main;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource2 = gameObject.AddComponent<AudioSource>();
+        audioSource2.volume = 0.8f;
+        audioSource3 = gameObject.AddComponent<AudioSource>();
 
     }
     private void Start()
@@ -47,6 +66,10 @@ public class PlayerController : MonoBehaviour
         if (z + x != 0)
         {
             m_Animator.SetBool("Moving", true);
+            if (audioSource2 != null && walkSound != null&& !audioSource2.isPlaying)
+            {
+                audioSource2.PlayOneShot(walkSound);
+            }
         }
         else
         {
@@ -86,6 +109,10 @@ public class PlayerController : MonoBehaviour
             bullet.transform.rotation = bulletRotation;
             
             //bullet.GetComponent<Rigidbody>().velocity = bulletDirection.normalized * bulletSpeed;
+            if (audioSource != null && shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound);
+            }
         }
     }
     private void PlayerTakeDamageEvent(int damage)

@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fastTrollData: {fileID: 11400000, guid: 703049746bc94be41bbe89b18cb8ec3b, type: 2}
+  m_Health: 0
+  attack: {fileID: 8300000, guid: 0a7e05ac33a2d63488765ac8b0b02fa8, type: 3}
 --- !u!195 &9043436716821519240
 NavMeshAgent:
   m_ObjectHideFlags: 0

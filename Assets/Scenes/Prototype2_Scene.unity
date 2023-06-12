@@ -17665,6 +17665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camOffset: {x: -0.37, y: 12.76, z: 7.59}
   camLerpSpeed: 0.125
+  scrollFactor: 1.1
 --- !u!1 &658612326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1309898336873326, guid: 21e2e89d0180b9e4bbc01786c55935a8, type: 3}
@@ -53453,6 +53454,7 @@ GameObject:
   - component: {fileID: 4019393337586364934}
   - component: {fileID: 4019393337586364933}
   - component: {fileID: 4019393337586364931}
+  - component: {fileID: 4019393337586364935}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -53479,6 +53481,9 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 989610674}
   fireDelay: 0.12
   isBuildModeEnabled: 0
+  shootSound: {fileID: 8300000, guid: eccca94dfc5611d46b49f7667302e2e5, type: 3}
+  walkSound: {fileID: 8300000, guid: cfb36506eb6cf9d4d8a8f0aeb3a83821, type: 3}
+  trollDeathSound: {fileID: 8300000, guid: a1f3cca38da1a3e4faf1ebd7b04cd915, type: 3}
 --- !u!54 &4019393337586364934
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -53495,6 +53500,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!81 &4019393337586364935
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019393337586364932}
+  m_Enabled: 1
 --- !u!95 &4862394145335738803
 Animator:
   serializedVersion: 4

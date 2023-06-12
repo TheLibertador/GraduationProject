@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   earlTrollData: {fileID: 11400000, guid: 958ffdbf923e8cb49bd910d57e881d96, type: 2}
+  m_Health: 0
+  attack: {fileID: 8300000, guid: 57898236f26e6024daf033437c2a85cc, type: 3}
 --- !u!195 &3684743355811401114
 NavMeshAgent:
   m_ObjectHideFlags: 0

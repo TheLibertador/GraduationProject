@@ -14,8 +14,15 @@ public class HeavyTroll : Troll
 
     private bool isDamageCoroutineActive = false;
 
+    [SerializeField] private AudioClip attack;
+    private AudioSource audioSource;
     private void Awake()
     {
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         m_Agent = gameObject.GetComponent<NavMeshAgent>();
         m_İnitialTarget = GameObject.FindWithTag("Player").transform;
         m_Agent.speed = heavyTrollData.enemySpeed;
@@ -42,6 +49,10 @@ public class HeavyTroll : Troll
             if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 m_Animator.SetTrigger("Attack");
+                if (audioSource != null && attack != null && !audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(attack);
+                }
                 if (!isDamageCoroutineActive)
                 {
                     isDamageCoroutineActive = true;
@@ -55,6 +66,10 @@ public class HeavyTroll : Troll
             if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
                 m_Animator.SetTrigger("Attack");
+                if (audioSource != null && attack != null && !audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(attack);
+                }
                 if(!isDamageCoroutineActive)
                 {
                     isDamageCoroutineActive = true;

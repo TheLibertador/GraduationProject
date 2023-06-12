@@ -58,6 +58,7 @@ namespace Guns
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
                         StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyFastTroll.gameObject);
+                        GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(2);
                         ResourceManager.Instance.AddResource("gold",10);
@@ -75,6 +76,7 @@ namespace Guns
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
                         StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyEarlTroll.gameObject);
+                        GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(5);
                         ResourceManager.Instance.AddResource("gold",30);
@@ -92,6 +94,7 @@ namespace Guns
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
                         StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyHeavyTroll.gameObject);
+                        GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(5);
                         ResourceManager.Instance.AddResource("gold",20);
@@ -109,6 +112,7 @@ namespace Guns
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
                         StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemyKingTroll.gameObject);
+                        GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(10);
                         ResourceManager.Instance.AddResource("gold",50);
@@ -126,6 +130,7 @@ namespace Guns
                         var particleEffect = Instantiate(deathParticleEffect, other.transform.position, Quaternion.identity);
                         StartCoroutine(DestroyPartilceEffect(particleEffect));
                         Destroy(enemySmallTroll.gameObject);
+                        GameObject.FindWithTag("Player").GetComponent<PlayerController>().PlayDeathSound();
                         GameManager.Instance.numberOfActiveEnemies--;
                         UIManager.Instance.EarnXp(1);
                         ResourceManager.Instance.AddResource("gold",5);
@@ -133,7 +138,7 @@ namespace Guns
                     Destroy(gameObject);
                 }
             }
-            else if (other.gameObject.CompareTag("Tree") || other.gameObject.CompareTag("Rock"))
+            else
             {
                 Destroy(gameObject);
             }
