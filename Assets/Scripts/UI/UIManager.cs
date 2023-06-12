@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
 
     public int PlayerLevel;
     public TextMeshProUGUI PlayerLevelText;
+
+    [SerializeField] private GameObject controlsPanel;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,7 +63,7 @@ public class UIManager : MonoBehaviour
     {
         DisplayResourceAmounts();
         CheckContinueButtonActivity();
-        if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuOpen)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ActivateOptionsPanel();
         }
@@ -129,12 +131,14 @@ public class UIManager : MonoBehaviour
     {
         optionsPanel.SetActive(true);
         optionsMenuOpen = true;
+        Time.timeScale = 0f;
     }
 
     public void DeActivateOptionsPanel()
     {
         optionsPanel.SetActive(false);
         optionsMenuOpen = false;
+        Time.timeScale = 1f;
     }
     
     #endregion
@@ -162,5 +166,19 @@ public class UIManager : MonoBehaviour
         PlayerLevelText.text = "Player Level: " + PlayerLevel;
 
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
+    public void ActivateControlPanel()
+    {
+        controlsPanel.SetActive(true);
+    }
+
+    public void CloseControlPanel()
+    {
+        controlsPanel.SetActive(false);
+    }
+    
 }
